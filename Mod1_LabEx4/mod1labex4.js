@@ -15,3 +15,9 @@ console.log("5+2 = ",sum(5,2));
 console.log("5-2 = ",subtract(2,5));
 console.log("5*2 = ",multiply(5,2));
 console.log("5/2 = ",divide(5,2));
+
+/*
+module.export.sum1 = function(a,b){
+    return a+b;
+}
+*/
