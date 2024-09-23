@@ -1,6 +1,8 @@
-book = '{
-    "title":"Bad jokes",
-    "description":"Book of really bad jokes",
-    "author":"Who else?",
-    "totalpages":1
-}'
+{"book":
+    {
+        "title":"Bad jokes",
+        "description":"Book of really bad jokes",
+        "author":"Who else?",
+        "totalpages":1
+    }
+}
