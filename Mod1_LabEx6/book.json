@@ -1,8 +1,6 @@
-{"book":
-    {
-        "title":"Bad jokes",
-        "description":"Book of really bad jokes",
-        "author":"Who else?",
-        "totalpages":1
-    }
+{
+    "title":"Bad jokes",
+    "description":"Book of really bad jokes",
+    "author":"Who else?",
+    "totalpages":1
 }

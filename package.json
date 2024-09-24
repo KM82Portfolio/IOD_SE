@@ -1,5 +1,8 @@
 {
   "dependencies": {
     "sentiment": "^5.0.2"
+  },
+  "scripts":{
+    "run_mod1labex4_twice":"node ./Mod1_LabEx4/mod1labex4.js && node ./Mod1_LabEx4/mod1labex4.js"
   }
 }
