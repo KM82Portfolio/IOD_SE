@@ -13,8 +13,8 @@
     nav {
         float: left;
         background-color: gold;
-        width: 30%;
-        height: 100%;
+        width: 20%;
+        height: 500px;
         padding: 20px;
     } 
     p{
@@ -24,10 +24,11 @@
     article {
         background-color: whitesmoke;
         float: left;
-        width: 70%;
+        width: 80%;
         padding: 20px;
     }
     section.masterSection {
+        width:80%;
         float: left;
         background-color: gold;
     }
@@ -39,12 +40,19 @@
     } 
     table{
         float:left;
-        width:20%
+        width:50%;
+        border: 1px;
+    }
+    th,td{
+        border: 1px solid black;
+        border-radius: 5px;
+        text-align:center;
     }
     aside {
         clear: both;
     } 
     footer {
+        width:100%;
         background: #222;
         color: #eee;
         text-align: center;
