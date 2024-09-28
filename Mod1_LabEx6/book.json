@@ -2,5 +2,6 @@
     "title":"Bad jokes",
     "description":"Book of really bad jokes",
     "author":"Who else?",
-    "totalpages":1
+    "totalpages":1,
+    "Chapters":["Intro","Act 1","Act 2","Act 3"]
 }
