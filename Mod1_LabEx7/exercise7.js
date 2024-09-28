@@ -91,8 +91,30 @@ function divideTester(numtests){
     }
     
 }
-
+//Test logic can also ensure <function call> !=undefined
 sumTester(3);
 subtractTester(3);
 multiplyTester(3);
 divideTester(3);
+
+//If we wanted to test using a test dataset
+let sumTestData = []
+
+function propersumTester(numtests){
+    
+    console.log("Testing sum() function");
+    
+    for(let i=0;i<numtests;i++){
+        
+        alpha = sum(i,i+1);
+        beta = i + (i+1);
+        console.log("Pass condition for this test is ",beta);
+
+        if(alpha!=beta){
+            console.log("Test failed for sum(",i,",",i+1,")");
+        } else {
+            console.log("Test passed for sum(",i,",",i+1,")");
+        }
+    }
+    
+}

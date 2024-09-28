@@ -1,11 +1,65 @@
 <!DOCTYPE html>
 
-<script>
-    function diceRoll(diceType){
-        if(diceType==="D6"){
+<head>
+    
+</head>
 
-        }
+
+<script>
+    function getDiceSelected(){
+        let diceSelected = document.getElementById('dice_selector');
+        document.getElementById('test_area').innerHTML=diceSelected.options[diceSelected.selectedIndex].value;
+        return diceSelected.options[diceSelected.selectedIndex].value;
+    }
+
+    function rollDice(){
+        let diceSelected = document.getElementById('dice_selector');
+        let diceType = document.getElementById('test_area').innerHTML
+        let numfaces=diceType.substring(1); //get the number e.g. 6 from D6
+        document.getElementById('test_area1').innerHTML=diceRoller(numfaces);
+    }
+
+    function diceRoller(n){
+        return Math.floor(Math.random() * n) + 1;
+    }
+
+    function test_diceRoller(){
+
+        let testValues = 
+        
     }
 </script>
+
+<fieldset>
+    <Legend>We Roll The Dice Here</Legend>
+    <p class="form_data_entry_sel">
+        <label for="dice_selector">Select Dice Type</label>
+        <select name="dice_selector" id="dice_selector">
+            <option>D6</option>
+            <option>D10</option>
+        </select>
+    </p>
+
+    <button id="select_dice_btn" onclick="getDiceSelected()">Select Dice</button>
+
+
+    <p id="test_area"></p>
+
+    <button id="roll_dice_btn" onclick="rollDice()">Roll Dice</button>
+
+    <p id="test_area1"></p>
+    <p id="test_area2"></p>
+
+</fieldset>
+
+<fieldset>
+    <Legend>We Unit Test diceRoller() Here</Legend>
+    <label for="fname">Enter number of faces to test</label>
+    <input type="text" id="fname" name="fname">
+    <button id="roll_dice_btn" onclick="rollDice()">Submit Values for Test</button>
+</fieldset>
+
+
+
 
 </html>
