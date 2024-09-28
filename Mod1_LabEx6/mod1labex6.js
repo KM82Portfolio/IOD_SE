@@ -19,18 +19,11 @@ console.log("New Book Description : ",book.description);//print output to log
 console.log("This book has ",book.Chapters.length," chapters");
 console.log("The title of the 4th Chapter is",book.Chapters[3]);
 
-//JSON parse test
-//const rawdata = '{"title":"Bad jokes","description":"Book of really bad jokes", "author":"Who else?","totalpages":1}';
-//let book1 = JSON.parse(rawdata);
-//console.log("Parsed JSON title : ",book1.title);
-
-
-
-
 //function to rewrite obj properties
 function reWriter1(obj,obj_prop,replacement_text){
-    obj[obj_prop] = replacement_text; //within
+    let obj1=eval(obj);
+    obj1[obj_prop] = replacement_text; 
 }
 
-reWriter1("book","title","New Title");
+reWriter1("book","title","Hahaha");
 console.log("Pass object test",book.title);
