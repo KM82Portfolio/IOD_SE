@@ -25,8 +25,15 @@
 
     function test_diceRoller(){
 
-        let testValues = 
-        
+        let rd = document.getElementById('test_values').value;
+        let testValues = [];
+        document.getElementById('test_area3').innerHTML=testValues.value; //comment this line out when testing done
+
+        for(let i=0;i<100;i++){
+            if(diceRoller(i) < 0 || diceRoller(i)>){
+                throw()
+            }
+        }
     }
 </script>
 
@@ -55,8 +62,11 @@
 <fieldset>
     <Legend>We Unit Test diceRoller() Here</Legend>
     <label for="fname">Enter number of faces to test</label>
-    <input type="text" id="fname" name="fname">
-    <button id="roll_dice_btn" onclick="rollDice()">Submit Values for Test</button>
+    <input type="text" id="test_values" name="test_values">
+    <button id="roll_dice_btn" onclick="test_diceRoller()">Submit Values for Test</button>
+
+    <p id="test_area3"></p>
+    
 </fieldset>
 
 
