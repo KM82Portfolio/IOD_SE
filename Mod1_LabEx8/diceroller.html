@@ -22,18 +22,18 @@
     function diceRoller(n){
         return Math.floor(Math.random() * n) + 1;
     }
-
+    
     function test_diceRoller(){
 
-        let rd = document.getElementById('test_values').value;
-        let testValues = [];
+        let testValues = document.getElementById('test_values').value;
         document.getElementById('test_area3').innerHTML=testValues.value; //comment this line out when testing done
 
-        for(let i=0;i<100;i++){
+        //WIP
+        /*for(let i=0;i<100;i++){
             if(diceRoller(i) < 0 || diceRoller(i)>){
                 throw()
             }
-        }
+        }*/
     }
 </script>
 
