@@ -8,12 +8,32 @@
     font-weight:bold;
 }
 
+.div3 > .div4 {
+    background-color:yellow;
+}
+
+header {
+    position:sticky;
+    top: 0;
+}
+
+.left-nav-bar-list{
+    font-weight:bold;
+}
+
 img:hover{
     cursor:crosshair;
 }
 
 legend {
     font-weight:bold;
+}
+
+.wrap-div {
+    border: 5px solid blue;
+    display: block;
+    width: 88px;
+    height: 88px;
 }
 
 .box{
