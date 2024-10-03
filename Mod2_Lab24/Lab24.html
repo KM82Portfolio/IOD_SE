@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" href="./css/lab24.css"/>
+</head>
+
+<body>
+
+    <header>
+        <h1><span class="line-center-span">Lab 2.4 RESUME</span></h1>
+    </header>
+
+    <h2></h2>
+    
+    <main style="display:grid;">
+
+        <div class="left-nav-col">
+            <fieldset>
+                <legend>Left Menu Bar List</legend>
+                <ul class="left-nav-bar-list">
+                    <li>CSS Properties for Class</li>
+                    <li>Class & Inheritor CSS</li>
+                    <li>Pseudo-Class CSS</li>
+                </ul>
+            </fieldset>
+        </div>
+
+        <div class="div1" style="display:grid;grid-column-start:2;grid-column-end:8;">
+            css properties for class &lt;div1&gt;
+        </div>
+
+        <fieldset style="display:grid;grid-column-start:2;grid-column-end:8;">
+            <legend>Class & Inheritor CSS</legend>
+            <div class="div2">
+                <div id="div-in-para1" class="div3">
+                    css properties for &lt;div3&gt; type in para1 &lt;p&gt; class
+                </div>
+                <div id="div-in-para2" class="div3">
+                    css properties for &lt;div3&gt; type in para1 &lt;p&gt; class
+                    <div class="div4">
+                        Child class <em>of</em>  &lt;div3&gt; which is darker yellow
+                    </div>
+                </div>
+            </div>
+        </fieldset> 
+
+        <fieldset style="display:grid;grid-column-start:2;grid-column-end:4;">
+            <legend>Pseudo-Class CSS</legend>
+            <img src="./img/EMP.png"/>
+        </fieldset>
+
+        <fieldset style="display:grid;grid-column-start:4;grid-column-end:8;">
+            <legend>Wrap &lt;div&gt; Around Image</legend>
+            Blue image border wraps around image to ensure image fits perfectly in &lt;div&gt;
+            <div style="display:flex" class="wrap-div">
+                <img src="./img/Tornado.png"/>
+            </div>
+            
+        </fieldset>
+
+        <fieldset style="display:grid;grid-column-start:2;grid-column-end:8;">
+            <legend>Content Boxes</legend>
+            <section class="content-box box">
+                <p>Content Box, Padding & Border Added Externally</p>
+            </section>
+            <section class="border-box box">
+                <p>Border Box, Padding & Border Cut From Box Area, & <em>Overflowing</em> </p>
+            </section>
+        </fieldset>
+
+        <fieldset style="display:grid;grid-column-start:2;grid-column-end:8;">
+            <legend>Position Absolute & Relative</legend>
+            <section >
+                <p>Relative Position Section 1</p>
+            </section>
+            <section style="position:absolute;top:800px;left:800px;">
+                <p><b>Absolute Position Section 1</b></p>
+            </section>
+            <section ></section>
+                <p>Relative Position Section 1</p>
+            </section>
+        </fieldset>
+
+    </main>
+
+    <div class="footer-wrapper">
+        <footer class="sticky-footer">FOOTER TEST
+            
+        </footer>
+    </div>
+    
+
+
+</body>
+
+</html>
