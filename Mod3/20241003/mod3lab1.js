@@ -6,7 +6,8 @@ const b = "text";
 console.log(parseInt(b));
 console.log(typeof parseInt(b)); //NaN is an enumeration?
 
-var _ = require('lodash'); //testing lodash for class exercise
+//testing class exercise work using lodash  
+var _ = require('lodash'); 
 c = ["123","456"];
 d = _.map(c,x=>parseInt(x)); 
 for(let i=0;i<d.length;i++){
