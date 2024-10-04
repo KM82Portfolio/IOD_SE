@@ -89,3 +89,6 @@ legend {
     box-sizing:border-box;
     background:aqua;
 }
+.border-box-scroll{
+    overflow:scroll;
+}
