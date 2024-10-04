@@ -8,7 +8,7 @@ console.log(typeof parseInt(b)); //NaN is an enumeration?
 
 var _ = require('lodash'); //testing lodash for class exercise
 c = ["123","456"];
-d = _.map(c,x=>parseInt(x));
+d = _.map(c,x=>parseInt(x)); 
 for(let i=0;i<d.length;i++){
     console.log(d[i],typeof d);
 }
@@ -22,4 +22,5 @@ console.log(typeof 'text'); // string
 console.log(typeof Symbol('id')) // symbol
 console.log(typeof Math); // object
 console.log(typeof null); // object
-console.log(typeof console.log); // function
+console.log(typeof console.log); //
+*/ 
