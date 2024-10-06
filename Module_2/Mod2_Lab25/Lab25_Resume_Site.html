@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" href="./css/lab24.css"/>
+</head>
+
+<body>
+
+    <header>
+        <h1>Lab 2.4 RESUME</h1>
+    </header>
+
+    <h2></h2>
+    
+    <main style="display:grid;">
+
+        <div class="left-nav-col">
+            <fieldset>
+                <legend>Left Menu Bar List</legend>
+                <ul class="left-nav-bar-list">
+                    <a href="#preamble-fieldset "><li>Preamble</li>
+                    <a href="#client-roll-fieldset"><li>Clients</li></a>
+                    <a href="#professional-experience-fieldset"><li>Professional Experience</li></a>
+                </ul>
+            </fieldset>
+        </div>
+
+        <fieldset style="display:grid;grid-column:2/8;" id="preamble-fieldset">
+            <legend>Preamble</legend>
+            <article class="article-preamble-para">  
+                <div id="div-in-preamble-para">
+                    Experienced and motivated....
+                </div>
+                <div id="div-in-preamble-para">
+                    Contact Details
+                    <div class="div4">
+                        Email: jobenquiries@email.com Tel: +65 1234 5678
+                    </div>
+                </div>
+            </article>
+        </fieldset> 
+
+        <fieldset style="display:grid;grid-column:2/8;grid-row:2/2;" id="client-roll-fieldset">
+            <legend>Clients</legend>
+            <section class="client-roll-logo-section" style="display:flex;flex-direction:row;">
+                <div class="client-logo-div">
+                    <a href="#exp1">
+                        <img class="client-logo-div" src="./img/Alacrity.png"/>
+                    </a>
+                </div>
+                <div class="client-logo-div">
+                    <a href="#exp2">
+                        <img class="client-logo-div" src="./img/EMP.png"/>
+                    </a>
+                </div> 
+                <div class="client-logo-div">
+                    <a href="#exp3">
+                        <img class="client-logo-div" src="./img/Tornado.png"/>
+                    </a>
+                </div>
+                <div class="client-logo-div">
+                    <a href="#exp4">
+                        <img class="client-logo-div" src="./img/Alacrity.png"/>
+                    </a>
+                </div>
+                <div class="client-logo-div">
+                    <a href="#exp5">
+                        <img class="client-logo-div" src="./img/EMP.png"/>
+                    </a>
+                </div> 
+                <div class="client-logo-div">
+                    <a href="#exp6">
+                        <img class="client-logo-div" src="./img/Tornado.png"/>
+                    </a>
+                </div>
+                <div class="client-logo-div">
+                    <a href="#exp7">
+                        <img class="client-logo-div" src="./img/Alacrity.png"/>
+                    </a>
+                </div>
+            </section>
+        </fieldset>
+
+        <fieldset style="display:grid;grid-column:2/8;overflow:scroll" id="professional-experience-fieldset">
+            <legend>Professional Experience</legend>
+            <article style="overflow:scroll;">
+                <div class="exp-item-div" id="exp1">
+                    <h3>Job Position 1</h3>
+                    <p>Performed....</p>
+                    <ul>
+                        <li>Did this</li>
+                        <li>Did that</li>
+                        <li>Did this too</li>
+                    </ul>
+                </div>
+                <div class="exp-item-div" id="exp2">
+                    <h3>Job Position 2</h3>
+                    <p>Performed....</p>
+                    <ul>
+                        <li>Did this</li>
+                        <li>Did that</li>
+                        <li>Did this too</li>
+                    </ul>
+                </div>
+                <div class="exp-item-div" id="exp3">
+                    <h3>Job Position 3</h3>
+                    <p>Performed....</p>
+                    <ul>
+                        <li>Did this</li>
+                        <li>Did that</li>
+                        <li>Did this too</li>
+                    </ul>
+                </div>
+                <div class="exp-item-div" id="exp4">
+                    <h3>Job Position 4</h3>
+                    <p>Performed....</p>
+                    <ul>
+                        <li>Did this</li>
+                        <li>Did that</li>
+                        <li>Did this too</li>
+                    </ul>
+                </div>
+                <div class="exp-item-div" id="exp5">
+                    <h3>Job Position 5</h3>
+                    <p>Performed....</p>
+                    <ul>
+                        <li>Did this</li>
+                        <li>Did that</li>
+                        <li>Did this too</li>
+                    </ul>
+                </div>
+                <div class="exp-item-div" id="exp6">
+                    <h3>Job Position 6</h3>
+                    <p>Performed....</p>
+                    <ul>
+                        <li>Did this</li>
+                        <li>Did that</li>
+                        <li>Did this too</li>
+                    </ul>
+                </div>
+                <div class="exp-item-div" id="exp7">
+                    <h3>Job Position 7</h3>
+                    <p>Performed....</p>
+                    <ul>
+                        <li>Did this</li>
+                        <li>Did that</li>
+                        <li>Did this too</li>
+                    </ul>
+                </div>
+            </article>  
+            <section class="content-box box">
+                <p>Content Box, Padding & Border Added Externally</p>
+            </section>
+            <section class="border-box box">
+                <p>Border Box, Padding & Border Cut From Box Area, & <em>Overflowing</em> </p>
+            </section>
+        </fieldset>
+
+    </main>
+
+    <div class="footer-wrapper">
+        <footer class="sticky-footer">FOOTER TEST
+            
+        </footer>
+    </div>
+    
+
+
+</body>
+
+</html>
