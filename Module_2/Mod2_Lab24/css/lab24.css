@@ -1,66 +1,51 @@
-.div1{
-    background-color: greenyellow;
-    font-weight:bold;
+html {
+    scroll-behavior: smooth;
+  }
+  
+header {
+    position:sticky;
+    top: 0;
+    background-color:aquamarine;
+    text-align:center;
+    /*z-index:2;*/
+}
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
 
-.div2 div{
-    background-color: aqua;
-    font-weight:bold;
+.article-preamble-para div{  
+    border-color: aqua;
+    font-family: tahoma;
+    padding:14px;
+    border-width:14px;
 }
+
 
 .div3 > .div4 {
-    background-color:yellow;
+    border-color:yellow;
 }
 
 h1{
     text-align:center;
 }
 
-header {
-    position:sticky;
-    top: 0;
-    background-color:aquamarine;
-    text-align:center;
-    position:relative;
-    z-index:2;
-}
-header::before{
-    position:sticky;
-    content:"";
-    position:absolute;
-    top:50%;
-    left:0;
-    right:0;
-    border-top:solid 8px black;
-    z-index:-1;
-}
-header::after{
-    position:sticky;
-    content:"";
-    position:absolute;
-    top:50%;
-    left:0;
-    right:0;
-    border-top:solid 8px black;
-    z-index:-1;
-}
-.line-center-span{
-    position:sticky;
-    margin:0;padding:0 10px;
-    background:aquamarine;
-    display:inline-block;
-}
 
+
+legend{
+    font-weight: bolder;
+    font-size:larger;
+}
 
 .left-nav-col{
     display:grid;
     grid-column-start:1;
-    grid-column-end:2;
+    grid-column-end:1;
     grid-row-start:1;
     grid-row-end:8;
     height:100%;
     background-color: aqua;/*color to test*/
-    position:relative;
 }
 
 .left-nav-bar-list{
@@ -82,6 +67,14 @@ legend {
     height: 88px;
 }
 
+.client-logo-div{
+    display: block;
+    padding: 11px;
+    width: 88px;
+    height: 88px;
+    
+}
+
 .box{
     padding:24px;
     border:1px;
@@ -94,11 +87,23 @@ legend {
 .content-box{
     box-sizing:content-box;
     background:gold;
+    overflow:scroll;
+}
+
+.exp-item-div h3{
+    font-family: Arial;
+}
+
+.exp-item-div h3{
+    font-family: Arial;
 }
 
 .border-box{
     box-sizing:border-box;
     background:aqua;
+}
+.border-box-scroll{
+    overflow:scroll;
 }
 
 .sticky-footer{
