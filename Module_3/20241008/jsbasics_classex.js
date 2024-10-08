@@ -35,6 +35,7 @@ console.log('Comparing original car obj with shallow copy car2 owner.age',car.ow
 // Make a deep copy this time using the same car object
 let _ = require('lodash');
 car4=_.cloneDeep(car);
+carCloneJSON = JSON.parse(JSON.stringify(car));
 
 // Update the value of the second level owner's age of the deep clone one to 77
 car4.owner.age=77;
