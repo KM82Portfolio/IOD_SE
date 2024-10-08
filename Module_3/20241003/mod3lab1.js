@@ -14,6 +14,8 @@ for(let i=0;i<d.length;i++){
     console.log(d[i],typeof d);
 }
 
+console.log(true==1);
+console.log(true===1);
 /*
 console.log(typeof undefined); // undefined
 console.log(typeof 0); // number
