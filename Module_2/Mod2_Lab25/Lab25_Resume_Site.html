@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <head>
-    <link rel="stylesheet" href="./css/lab25.css"/>
+    <link rel="stylesheet" href="./css/lab24.css"/>
 </head>
 
 <body>
@@ -14,7 +14,7 @@
     
     <main style="display:grid;">
 
-        <div class="left-nav-col">
+        <div class="left-nav-col" media="(min-width:20em)">
             <fieldset>
                 <legend>Left Menu Bar List</legend>
                 <ul class="left-nav-bar-list">
@@ -25,7 +25,7 @@
             </fieldset>
         </div>
 
-        <fieldset style="display:grid;grid-column:2/8;" id="preamble-fieldset">
+        <fieldset style="display:grid;grid-column:2/8;" id="preamble-fieldset" media="(min-width:64em)">
             <legend>Preamble</legend>
             <article class="article-preamble-para">  
                 <div id="div-in-preamble-para">
@@ -40,7 +40,7 @@
             </article>
         </fieldset> 
 
-        <fieldset style="display:grid;grid-column:2/8;grid-row:2/2;" id="client-roll-fieldset">
+        <fieldset style="display:grid;grid-column:2/8;grid-row:2/2;" id="client-roll-fieldset" media="(min-width:64em)">
             <legend>Clients</legend>
             <section class="client-roll-logo-section" style="display:flex;flex-direction:row;">
                 <div class="client-logo-div">
@@ -81,7 +81,7 @@
             </section>
         </fieldset>
 
-        <fieldset style="display:grid;grid-column:2/8;overflow:scroll" id="professional-experience-fieldset">
+        <fieldset style="display:grid;grid-column:2/8;overflow:scroll" id="professional-experience-fieldset" media="(min-width:64em)">
             <legend>Professional Experience</legend>
             <article style="overflow:scroll;">
                 <div class="exp-item-div" id="exp1">
@@ -148,12 +148,6 @@
                     </ul>
                 </div>
             </article>  
-            <section class="content-box box">
-                <p>Content Box, Padding & Border Added Externally</p>
-            </section>
-            <section class="border-box box">
-                <p>Border Box, Padding & Border Cut From Box Area, & <em>Overflowing</em> </p>
-            </section>
         </fieldset>
 
     </main>
