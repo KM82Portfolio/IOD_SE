@@ -44,3 +44,5 @@ car4.owner.age=77;
 console.log('Comparing deep clone .owner.age with original obj',car.owner.age === car4.owner.age); // should return false
 
 // Bonus: delete the owner property of the original object "car"
+delete car.owner
+console.log('Original car is now',car);
