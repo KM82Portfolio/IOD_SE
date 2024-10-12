@@ -1,0 +1,130 @@
+html {
+    scroll-behavior: smooth;
+    --particulars-color: purple;
+  }
+  
+header {
+    position:sticky;
+    top: 0;
+    background-color:#7fffd4;
+    text-align:center;
+    /*z-index:2;*/
+}
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.article-preamble-para div{  
+    border-color: aqua;
+    font-family: tahoma;
+    color: var(--particulars-color);
+    padding:14px;
+    border-width:14px;
+}
+
+
+.div3 > .div4 {
+    border-color:yellow;
+    color:--particulars-color;
+}
+
+h1{
+    text-align:center;
+}
+
+
+
+legend{
+    font-weight: bolder;
+    font-size:larger;
+}
+
+#nav-bar{
+    display:grid;
+    grid-column-start:1;
+    grid-column-end:1;
+    grid-row-start:1;
+    grid-row-end:8;
+    height:100%;
+    background-color: aqua;/*color to test*/
+}
+
+img:hover{
+    cursor:crosshair;
+}
+
+legend {
+    font-weight:bold;
+}
+
+.wrap-div {
+    border: 5px solid blue;
+    display: block;
+    width: 88px;
+    height: 88px;
+}
+
+.client-logo-img{
+    display: block;
+    padding: 11px;
+    width: 88px;
+    height: 88px;
+    
+}
+
+.client-logo-instructions{
+    font-family:Arial;
+    padding: 3px !important; /*Enforce minimum padding*/
+    color:cornflowerblue !important;
+}
+.client-roll-logo-section{
+    overflow-x:scroll;
+}
+.box{
+    padding:24px;
+    border:1px;
+    margin:24px;
+    width:150px;
+    height:150px;
+    text-align:center;
+}
+
+.content-box{
+    box-sizing:content-box;
+    background:gold;
+    overflow:scroll;
+}
+
+.exp-item-div h3{
+    font-family: Arial;
+}
+
+.exp-item-div h3{
+    font-family: Arial;
+}
+
+.border-box{
+    box-sizing:border-box;
+    background:aqua;
+}
+.border-box-scroll{
+    overflow:scroll;
+}
+
+.sticky-footer{
+  flex: 0 0 auto;
+  display: flex;
+  margin: 1em;
+  width: 80%;
+  border: 1px solid #000;
+  justify-content: space-between;
+}
+
+@media only screen and (max-width: 300px) {
+  /* For mobile phones: */
+  main{
+    min-width:333px
+  }
+}

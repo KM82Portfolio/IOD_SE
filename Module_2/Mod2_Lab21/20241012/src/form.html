@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="icon" type="image/x-icon" href="img/Alacrity.png">
+    <link rel="icon" type="image/x-icon" href="Alacrity.png"> 
+    <link rel="stylesheet" href="./css/lab21.css">
+    <title>Module 2 Lab 2.1 - HTML</title>
+</head>
+
+<body>
+
+    <header>
+        <h1 style="text-align: center;">Module 2 Lab 2.1 - HTML</h1>
+    </header>
+
+    <form action="/form_handler.asp" method="post" style="border-style:double;padding:11px;">
+
+        <fieldset id="user_details">
+            <legend>User Details</legend>
+            <p class="form_data_entry">
+                <label for="LoginID">Login ID</label><br>
+                <input type="text" name="LoginID" id="LoginID"/><!--name used by form_handler.asp, id used by html-->
+            </p>
+            <p class="form_data_entry">
+                <label for="pwd">Password</label><br>
+                <input type="password" name="pwd" id="pwd"/>
+            </p>
+            <p class="form_data_entry">
+                <label for="EmailID">Email Address</label><br>
+                <input type="email" name="EmailID" id="EmailID"/>
+            </p>
+            <legend>Account Type</legend>
+            <p class="form_data_entry_sel">
+                <ul style="text-align: left;">
+                    <li>
+                        <input type="radio" id="Acct_Basic"/>
+                        <label for="Acct_Basic">Basic</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="Acct_Enhanced"/>
+                        <label for="Acct_Enhanced">Enhanced</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="Acct_Premier"/>
+                        <label for="Acct_Premier">Premier</label>
+                    </li>
+                </ul>
+            </p>
+        </fieldset>
+
+        <fieldset id="feedback_type">
+            <legend>User Feedback</legend>    
+        <p class="form_data_entry_sel">
+            <label for="dropdown_menu_1">Select Feedback Type</label>
+            <select name="dropdown_menu_1" id="dropdown_menu_1">
+                <option>Complaint</option>
+                <option>Suggestion</option>
+                <option>Request</option>
+            </select>
+        </p>
+        <p class="form_data_entry">
+            <label for="MessageText">Message</label><br>
+            <textarea name="MessageText" id="MessageText"></textarea>
+        </p>
+        </fieldset>
+        <fieldset>
+            <legend>Submit Feedback</legend>
+            <p class="form_button">
+                <button type="submit" style="font-weight: bold;">Register</button>
+                <button type="reset" style="font-weight: bold;">Reset Fields</button>
+            </p>
+        </fieldset>
+        
+    </form>
+    
+    
+</body>
+
+</html>

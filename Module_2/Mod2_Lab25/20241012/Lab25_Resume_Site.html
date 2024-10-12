@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 
 <head>
-    <link rel="stylesheet" href="./css/lab24.css"/>
+    <link rel="stylesheet" href="./css/lab25.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
 
-    <div class="header">
-        <h1>Lab 2.4 RESUME</h1>
-    </div>
+    <header>
+        <h1>Lab 2.5 RESUME</h1>
+    </header>
     
     <main style="display:grid;">
 
-        <div class="left-nav-col" media="(min-width:20em)">
+        <div class="col-remake" id="nav-bar">
             <fieldset>
                 <legend>Left Menu Bar List</legend>
                 <ul class="left-nav-bar-list">
@@ -23,7 +24,7 @@
             </fieldset>
         </div>
 
-        <fieldset style="display:grid;grid-column:2/8;" id="preamble-fieldset" media="(min-width:64em)">
+        <fieldset class="col-remake" >
             <legend>Preamble</legend>
             <article class="article-preamble-para">  
                 <div id="div-in-preamble-para">
@@ -38,49 +39,49 @@
             </article>
         </fieldset> 
 
-        <fieldset style="display:grid;grid-column:2/8;grid-row:2/2;" id="client-roll-fieldset" media="(min-width:64em)">
+        <fieldset class="col-remake" >
             <legend>Clients</legend>
-            <p>Click a company logo to see my experience there</p>
+            <p class="client-logo-instructions">Click Company Logo To See My Experience There</p>
             <section class="client-roll-logo-section" style="display:flex;flex-direction:row;">
                 <div class="client-logo-div">
                     <a href="#exp1">
-                        <img class="client-logo-div" src="./img/Alacrity.png"/>
+                        <img class="client-logo-img" src="./img/Alacrity.png"/>
                     </a>
                 </div>
                 <div class="client-logo-div">
                     <a href="#exp2">
-                        <img class="client-logo-div" src="./img/EMP.png"/>
+                        <img class="client-logo-img" src="./img/EMP.png"/>
                     </a>
                 </div> 
                 <div class="client-logo-div">
                     <a href="#exp3">
-                        <img class="client-logo-div" src="./img/Tornado.png"/>
+                        <img class="client-logo-img" src="./img/Tornado.png"/>
                     </a>
                 </div>
                 <div class="client-logo-div">
                     <a href="#exp4">
-                        <img class="client-logo-div" src="./img/Alacrity.png"/>
+                        <img class="client-logo-img" src="./img/Alacrity.png"/>
                     </a>
                 </div>
                 <div class="client-logo-div">
                     <a href="#exp5">
-                        <img class="client-logo-div" src="./img/EMP.png"/>
+                        <img class="client-logo-img" src="./img/EMP.png"/>
                     </a>
                 </div> 
                 <div class="client-logo-div">
                     <a href="#exp6">
-                        <img class="client-logo-div" src="./img/Tornado.png"/>
+                        <img class="client-logo-img" src="./img/Tornado.png"/>
                     </a>
                 </div>
                 <div class="client-logo-div">
                     <a href="#exp7">
-                        <img class="client-logo-div" src="./img/Alacrity.png"/>
+                        <img class="client-logo-img" src="./img/Alacrity.png"/>
                     </a>
                 </div>
             </section>
         </fieldset>
 
-        <fieldset style="display:grid;grid-column:2/8;overflow:scroll" id="professional-experience-fieldset" media="(min-width:64em)">
+        <fieldset class="col-remake" >
             <legend>Professional Experience</legend>
             <article style="overflow:scroll;">
                 <div class="exp-item-div" id="exp1">
