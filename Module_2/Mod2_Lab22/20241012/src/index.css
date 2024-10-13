@@ -26,13 +26,15 @@ article{
     background-color:greenyellow;
     margin:1em;
     padding:2em;
-    width:888px; 
-    height:333px;
     width:64vw; 
-    height:64vh;
+    height:auto;
+    border-style:solid;/*must set border-style before any other border-<attribute> can be set*/
+    border-width:24px;
+    border-color:blue;
 }
-#box3{
-
+#overflow-box{
+    height:3em;
+    overflow:scroll
 }
 /* Put styles for questions 1-8 here */
 
