@@ -34,7 +34,7 @@ article{
 }
 #overflow-box{
     height:3em;
-    overflow:scroll
+    overflow-y:scroll
 }
 /* Put styles for questions 1-8 here */
 
