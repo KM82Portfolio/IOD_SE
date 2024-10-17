@@ -1,78 +1,92 @@
 <!DOCTYPE html>
 
 <head>
-    <link rel="icon" type="image/x-icon" href="img/Alacrity.png">
+    <link rel="icon" type="image/x-icon" href="./img/Alacrity.png">
     <link rel="icon" type="image/x-icon" href="Alacrity.png"> 
-    <link rel="stylesheet" href="./css/lab21.css">
-    <title>Module 2 Lab 2.1 - HTML</title>
+    <script src="./js/script.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Personal Finance Tracker</title>
 </head>
 
 <body>
 
     <header>
-        <h1 style="text-align: center;">Module 2 Lab 2.1 - HTML</h1>
+        <h1 style="text-align: center;">Personal Finance Tracker</h1>
     </header>
 
-    <form action="/form_handler.asp" method="post" style="border-style:double;padding:11px;">
-
-        <fieldset id="user_details">
-            <legend>User Details</legend>
-            <p class="form_data_entry">
-                <label for="LoginID">Login ID</label><br>
-                <input type="text" name="LoginID" id="LoginID"/><!--name used by form_handler.asp, id used by html-->
-            </p>
-            <p class="form_data_entry">
-                <label for="pwd">Password</label><br>
-                <input type="password" name="pwd" id="pwd"/>
-            </p>
-            <p class="form_data_entry">
-                <label for="EmailID">Email Address</label><br>
-                <input type="email" name="EmailID" id="EmailID"/>
-            </p>
-            <legend>Account Type</legend>
-            <p class="form_data_entry_sel">
-                <ul style="text-align: left;">
-                    <li>
-                        <input type="radio" id="Acct_Basic"/>
-                        <label for="Acct_Basic">Basic</label>
-                    </li>
-                    <li>
-                        <input type="radio" id="Acct_Enhanced"/>
-                        <label for="Acct_Enhanced">Enhanced</label>
-                    </li>
-                    <li>
-                        <input type="radio" id="Acct_Premier"/>
-                        <label for="Acct_Premier">Premier</label>
-                    </li>
-                </ul>
-            </p>
-        </fieldset>
-
-        <fieldset id="feedback_type">
-            <legend>User Feedback</legend>    
-        <p class="form_data_entry_sel">
-            <label for="dropdown_menu_1">Select Feedback Type</label>
-            <select name="dropdown_menu_1" id="dropdown_menu_1">
-                <option>Complaint</option>
-                <option>Suggestion</option>
-                <option>Request</option>
+    <fieldset id="transaction_details">
+        <legend>Transaction Details</legend>
+        <p id="p_transaction_date">
+            <input type="text" name="LoginID" id="txtDate" onload="writeSomething()"/>
+            <button style="font-weight: bold;" onclick="getDate()">Today's Date</button>
+        </p>
+        <span id="testSpan"></span>
+        <p class="ddm">
+            <label for="dropdown_menu_1">Select Expense Type</label><br>
+            <select name="dropdown_menu_1" id="dropdown_menu_1" style="min-width: 144px;">
+                <option>Income</option>
+                <option>Expense</option>
             </select>
         </p>
         <p class="form_data_entry">
-            <label for="MessageText">Message</label><br>
-            <textarea name="MessageText" id="MessageText"></textarea>
+            <label for="LoginID">Login ID</label><br>
+            <input type="text" name="LoginID" id="LoginID"/><!--name used by form_handler.asp, id used by html-->
         </p>
-        </fieldset>
-        <fieldset>
-            <legend>Submit Feedback</legend>
-            <p class="form_button">
-                <button type="submit" style="font-weight: bold;">Register</button>
-                <button type="reset" style="font-weight: bold;">Reset Fields</button>
-            </p>
-        </fieldset>
+        <p class="form_data_entry">
+            <label for="pwd">Password</label><br>
+            <input type="password" name="pwd" id="pwd"/>
+        </p>
+        <p class="form_data_entry">
+            <label for="EmailID">Email Address</label><br>
+            <input type="email" name="EmailID" id="EmailID"/>
+        </p>
+        <legend>Account Type</legend>
+        <p class="form_data_entry_sel">
+            <ul style="text-align: left;">
+                <li>
+                    <input type="radio" id="Acct_Basic"/>
+                    <label for="Acct_Basic">Basic</label>
+                </li>
+                <li>
+                    <input type="radio" id="Acct_Enhanced"/>
+                    <label for="Acct_Enhanced">Enhanced</label>
+                </li>
+                <li>
+                    <input type="radio" id="Acct_Premier"/>
+                    <label for="Acct_Premier">Premier</label>
+                </li>
+            </ul>
+        </p>
+    </fieldset>
+
+    <fieldset id="feedback_type">
+        <legend>User Feedback</legend>    
+    <p class="form_data_entry_sel">
+        <label for="dropdown_menu_1">Select Feedback Type</label>
+        <select name="dropdown_menu_1" id="dropdown_menu_1">
+            <option>Complaint</option>
+            <option>Suggestion</option>
+            <option>Request</option>
+        </select>
+    </p>
+    <p class="form_data_entry">
+        <label for="MessageText">Message</label><br>
+        <textarea name="MessageText" id="MessageText"></textarea>
+    </p>
+    </fieldset>
+    <fieldset>
+        <legend>Submit Feedback</legend>
+        <p class="form_button">
+            <button type="submit" style="font-weight: bold;">Register</button>
+            <button type="reset" style="font-weight: bold;">Reset Fields</button>
+        </p>
+    </fieldset>
+    
+    <form action="/form_handler.asp" method="post" style="border-style:double;padding:11px;" id="transactForm">
+
+        
         
     </form>
-    
     
 </body>
 
