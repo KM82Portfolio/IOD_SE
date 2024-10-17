@@ -15,30 +15,23 @@
     </header>
 
     <fieldset id="transaction_details">
+
         <legend>Transaction Details</legend>
+
         <p id="p_transaction_date">
-            <input type="text" name="LoginID" id="txtDate" onload="writeSomething()"/>
+            <input type="text" name="LoginID" id="txtDate" onload="writeSomething()"/> 
+            <br><span style="color:red">can't make date appear in text box</span><br>
+            <span style="color:red">js getDate() definitely works though as it can be written to innerHTML</span><br>
+            <span style="color:red">just can't write to textbox type input</span><br>
             <button style="font-weight: bold;" onclick="getDate()">Today's Date</button>
         </p>
         <span id="testSpan"></span>
-        <p class="ddm">
-            <label for="dropdown_menu_1">Select Expense Type</label><br>
-            <select name="dropdown_menu_1" id="dropdown_menu_1" style="min-width: 144px;">
-                <option>Income</option>
-                <option>Expense</option>
+
+        <p class="expense_Type_p">Select Expense Type
+            <select name="Type">
+                <option value="Income">Income</option>
+                <option value="Expense">Expense</option>
             </select>
-        </p>
-        <p class="form_data_entry">
-            <label for="LoginID">Login ID</label><br>
-            <input type="text" name="LoginID" id="LoginID"/><!--name used by form_handler.asp, id used by html-->
-        </p>
-        <p class="form_data_entry">
-            <label for="pwd">Password</label><br>
-            <input type="password" name="pwd" id="pwd"/>
-        </p>
-        <p class="form_data_entry">
-            <label for="EmailID">Email Address</label><br>
-            <input type="email" name="EmailID" id="EmailID"/>
         </p>
         <legend>Account Type</legend>
         <p class="form_data_entry_sel">
