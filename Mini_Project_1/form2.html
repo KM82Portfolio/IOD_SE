@@ -1,0 +1,74 @@
+<select name="segment">
+	<option>Select Segment</option>
+	<option value="Global">Global Secotr</option>
+	<option>National</option>
+	<option>Public</option>
+</select>
+<select name="pres">
+	<option class="Global National Public">Select President</option>
+	<option class="National">Chow</option>
+	<option class="Global">Jules</option>
+	<option class="Public">Williams</option>
+</select>
+<select name="svp">
+  <option class="Jules Williams Chow">Select svp</option>
+	<option class="Jules">Bolton</option>
+	<option class="Jules">Finnegan</option>
+	<option class="Jules">Harvey</option>
+	<option class="Jules">Heath</option>
+	<option class="Jules">Lipari</option>
+	<option class="Williams">Parker</option>
+	<option class="Williams">Sambar</option>
+	<option class="Jules">Wiedboldt</option>
+	<option class="Chow">NA</option>
+</select>
+<select name="vp">
+  <option class="Bolton Finnegan Harvey Heath Lipari Parker Sambar Wiedboldt NA">Select vp</option>
+	<option class="NA">Barbin</option>
+	<option class="Wiedboldt">Boza</option>
+	<option class="Sambar">Bugel</option>
+	<option class="Lipari">Caniano</option>
+	<option class="Wiedboldt">Colaneri</option>
+	<option class="na">Dapkiewicz</option>
+	<option class="Lipari">Gerami</option>
+	<option class="Lipari">Gill</option>
+	<option class="Lipari">Gerami</option>
+	<option class="Lipari">Kitson</option>
+	<option class="NA">Leff</option>
+	<option class="Finnegan">Leggio</option>
+	<option class="Lipari">Lemon</option>
+	<option class="Finnegan">Mitchell</option>
+	<option class="Finnegan">Reardon</option>
+	<option class="Wiedboldt">Rogers</option>
+	<option class="Wiedboldt">Ronan</option>
+	<option class="Lipari">Rooney-McMillen</option>
+	<option class="Parker">Roy</option>
+	<option class="Lipari">Salvage</option>
+	<option class="NA">Schwartz</option>
+	<option class="NA">Singer</option>
+	<option class="NA">Smith</option>
+	<option class="Parker">Troup</option>
+</select>
+<script>
+    unction hook(main, sub) {
+    console.log(main, sub)
+    var mains = main.children(),
+        subs = sub.children().detach()
+    main.change(function() {
+        var val = $(this).val()
+        sub.empty()
+        subs.filter("." + val).clone().appendTo(sub)
+    }).change()
+    }
+
+    $(document).ready(function() {
+    // Select Segment to determine Pres
+    hook($("[name=segment]"), $("[name=pres]"))
+    // Select President to determine SVP
+    hook($("[name=pres]"), $("[name=svp]"))
+    // Select SVP to determine VP
+    hook($("[name=svp]"), $("[name=vp]"))
+
+    });
+
+</script>

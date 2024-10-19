@@ -14,11 +14,13 @@ function getDate(){
 
 function populateIncExp(){
 
-    let mType = document.getElementById('sel_Inc_Exp')
-    let selection = mType.options[mType.selectedIndex].value
-    document.getElementById('testSpan1').innerHTML=selection;
+    let mType = document.getElementById('ddlIncExp');
+    document.getElementById('testSpan1').innerHTML=mType.options[mType.selectedIndex].value;
+    return mType.options[mType.selectedIndex].value;
 
 }
+
+
 /*
 var date = new Date();
 document.getElementById("demo").value = (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear();

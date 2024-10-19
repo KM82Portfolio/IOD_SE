@@ -27,14 +27,24 @@
         </p>
         <span id="testSpan"></span>
 
-        <p class="sel_Inc_Exp">Select Expense Type
+        <p id="ddlIncExp">Select Expense Type
             <select name="Type">
                 <option value="Income">Income</option>
                 <option value="Expense">Expense</option>
             </select>
         </p><br>
         <button style="font-weight: bold;" onclick="populateIncExp()">populateIncExp</button><br>
-        <span id="testSpan1"></span>
+        <p id="testSpan1"></p>
+        
+        <p class="ddlCategory">Select Expense Type
+            <select name="Type">
+                <option value="Income">Income</option>
+                <option value="Expense">Expense</option>
+            </select>
+        </p><br>
+
+        <label for="Amount">Enter Transaction Amount</label>
+        <input type="text" name="Amount" id="Amount" /> 
         
 
         <p class="expense_Type_p">Select Expense Type
@@ -43,58 +53,6 @@
                 <option value="Expense">Expense</option>
             </select>
         </p>
-
-
-
-
-
-
-
-
-
-        <legend>Account Type</legend>
-        <p class="form_data_entry_sel">
-            <ul style="text-align: left;">
-                <li>
-                    <input type="radio" id="Acct_Basic"/>
-                    <label for="Acct_Basic">Basic</label>
-                </li>
-                <li>
-                    <input type="radio" id="Acct_Enhanced"/>
-                    <label for="Acct_Enhanced">Enhanced</label>
-                </li>
-                <li>
-                    <input type="radio" id="Acct_Premier"/>
-                    <label for="Acct_Premier">Premier</label>
-                </li>
-            </ul>
-        </p>
-    </fieldset>
-
-    <fieldset id="feedback_type">
-        <legend>User Feedback</legend>    
-    <p class="form_data_entry_sel">
-        <label for="dropdown_menu_1">Select Feedback Type</label>
-        <select name="dropdown_menu_1" id="dropdown_menu_1">
-            <option>Complaint</option>
-            <option>Suggestion</option>
-            <option>Request</option>
-        </select>
-    </p>
-    <p class="form_data_entry">
-        <label for="MessageText">Message</label><br>
-        <textarea name="MessageText" id="MessageText"></textarea>
-    </p>
-    </fieldset>
-    <fieldset>
-        <legend>Submit Feedback</legend>
-        <p class="form_button">
-            <button type="submit" style="font-weight: bold;">Register</button>
-            <button type="reset" style="font-weight: bold;">Reset Fields</button>
-        </p>
-    </fieldset>
-    
-    <form action="/form_handler.asp" method="post" style="border-style:double;padding:11px;" id="transactForm">
 
         
         
