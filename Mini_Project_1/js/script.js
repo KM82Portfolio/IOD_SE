@@ -11,6 +11,14 @@ function getDate(){
     let datestring = day + "/" + month + "/" + year;
     document.getElementById('testSpan').innerHTML=datestring;
 } 
+
+function populateIncExp(){
+
+    let mType = document.getElementById('sel_Inc_Exp')
+    let selection = mType.options[mType.selectedIndex].value
+    document.getElementById('testSpan1').innerHTML=selection;
+
+}
 /*
 var date = new Date();
 document.getElementById("demo").value = (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear();

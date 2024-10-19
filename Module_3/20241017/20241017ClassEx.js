@@ -118,8 +118,8 @@ Use Deconstruction ... to sum array where we dunno length before writing functio
 `)
 function add(...rest) {
 return rest.reduce(function (acc, val) {
-    return acc + val;
-}, 0);
+        return acc + val;
+    }, 0);
 }
 
 console.log(add(1, 2, 4, 5, 6, 7,8));
