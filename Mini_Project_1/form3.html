@@ -4,36 +4,43 @@
     
 </head>
 
-<script>
-    function getType(){
-        let sType = document.getElementById('ddlselectType');
-        document.getElementById('test_area').innerHTML=sType.options[sType.selectedIndex].value;
-        return sType.options[sType.selectedIndex].value;
-    }
-    
-    function store_ddlselectType(){
-        let sType = document.getElementById('ddlselectType');
+<script>  
+    function store_ddlSelect(elemid){
+        let sType = document.getElementById(elemid);
         selection=sType.options[sType.selectedIndex].value;
         localStorage.setItem("Type", selection);
-        document.getElementById('test_area2').innerHTML=localStorage.getItem("Type");//testing only
+        document.getElementById('test_area3').innerHTML=localStorage.getItem("Type");//testing only
     }
 </script>
 
 <fieldset id="fieldset_diceroll">
     <Legend>Enter Income/Expense Details Here</Legend>
-    <p class="form_data_entry_sel">
+    <p>
         <label for="ddlselectType">Select Income/Expense</label>
-        <select name="ddlselectType" id="ddlselectType" onchange="store_ddlselectType()">
+        <select name="ddlselectType" id="ddlselectType" onchange="store_ddlSelect('ddlselectType')">
             <option>Income</option>
             <option>Expense</option>
         </select>
     </p>
-
-    <button id="select_dice_btn" onclick="getType()">Confirm Income or Expense</button><span id="test_area"></span>
-    <br>
+    
     <span id="test_area2"></span>
-
-    <p><button id="roll_dice_btn" onclick="rollDice()">Roll Dice</button></p>
+    
+    <p>
+        <label for="ddlselectCategory">Select Income/Expense Category </label>
+        <select name="ddlselectCategory" id="ddlselectCategory" onchange="store_ddlSelect('ddlselectCategory')">
+            <option>Salary</option>
+            <option>Food</option> 
+            <option>Rent</option>
+            <option>Entertainment</option>
+        </select>
+    </p>
+    
+    <span id="test_area3"></span>
+   
+    <p>
+        <label for="amtEntry">Enter Amount</label>
+        <input type="number" id="amtEntry"/>
+    </p>
     
 
     
