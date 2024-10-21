@@ -1,63 +1,99 @@
 <!DOCTYPE html>
 
 <head>
-    <link rel="icon" type="image/x-icon" href="./img/Alacrity.png">
-    <link rel="icon" type="image/x-icon" href="Alacrity.png"> 
-    <script src="./js/script.js"></script>
-    <link rel="stylesheet" href="./css/style.css">
-    <title>Personal Finance Tracker</title>
+    
 </head>
 
-<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>  
 
-    <header>
-        <h1 style="text-align: center;">Personal Finance Tracker</h1>
-    </header>
+    function store_ddlSelect(elemid){
+        let sType = document.getElementById(elemid);
+        selection=sType.options[sType.selectedIndex].value;
+        let selectionType=elemid.toString();
+        localStorage.setItem(selectionType, selection);
+        document.getElementById('test_area3').innerHTML=localStorage.getItem(selectionType);//testing only
+        return selection;
+    }
 
-    <fieldset id="transaction_details">
-
-        <legend>Transaction Details</legend>
-
-        <p id="p_transaction_date">
-            <input type="text" name="LoginID" id="txtDate" onload="writeSomething()"/> 
-            <br><span style="color:red">can't make date appear in text box</span><br>
-            <span style="color:red">js getDate() definitely works though as it can be written to innerHTML</span><br>
-            <span style="color:red">just can't write to textbox type input</span><br>
-            <button style="font-weight: bold;" onclick="getDate()">Today's Date</button>
-        </p>
-        <span id="testSpan"></span>
-
-        <p id="ddlIncExp">Select Expense Type
-            <select name="Type">
-                <option value="Income">Income</option>
-                <option value="Expense">Expense</option>
-            </select>
-        </p><br>
-        <button style="font-weight: bold;" onclick="populateIncExp()">populateIncExp</button><br>
-        <p id="testSpan1"></p>
-        
-        <p class="ddlCategory">Select Expense Type
-            <select name="Type">
-                <option value="Income">Income</option>
-                <option value="Expense">Expense</option>
-            </select>
-        </p><br>
-
-        <label for="Amount">Enter Transaction Amount</label>
-        <input type="text" name="Amount" id="Amount" /> 
-        
-
-        <p class="expense_Type_p">Select Expense Type
-            <select name="Type">
-                <option value="Income">Income</option>
-                <option value="Expense">Expense</option>
-            </select>
-        </p>
-
-        
-        
-    </form>
+    function storeTransaction(){//called by store transaction
+        transactionAmount = document.getElementById('transactionAmount').value;
+        localStorage.setItem("Amount", transactionAmount);
+        document.getElementById('test_area3').innerHTML=localStorage.getItem("Amount");//test
+    }
+    //LONGER TERM SOLUTION TO STORE EACH ENTRY AS JSON OBJECT See Adding a new array element to a JSON object in OneNote
+    function getDate(){
+        let todaydate = new Date();
+        let day = todaydate.getDate();
+        let month = todaydate.getMonth() + 1;
+        let year = todaydate.getFullYear();
+        let time = todaydate.toLocaleTimeString();
+        return datestring = day + "/" + month + "/" + year+"/"+time;
+    }
     
-</body>
+    function addRow(){
+        let tt1='<tr>';
+        let tt2=$('<td></td>').text(getDate());;
+        let tt3=$('<td></td>').text(localStorage.getItem("ddlselectType"));
+        let tt4=$('<td></td>').text(localStorage.getItem("ddlselectCategory"));
+        let tt5=$('<td></td>').text(localStorage.getItem("Amount"));
+        let tt6='</tr>';
+        $('#transactionTable').after(tt1,tt2,tt3,tt4,tt5,tt6);
+    }
+
+</script>
+    
+
+<fieldset id="transactionDetails">
+    <Legend>Enter Income/Expense Details Here</Legend>
+    <p>
+        <label for="ddlselectType">Select Income/Expense</label>
+        <select name="ddlselectType" id="ddlselectType" onchange="store_ddlSelect('ddlselectType')">
+            <option>Select Income/Expense</option>
+            <option>Income</option>
+            <option>Expense</option>
+        </select>
+    </p>
+    
+    <span id="test_area2"></span>
+    
+    <p>
+        <label for="ddlselectCategory">Select Income/Expense Category</label>
+        <select name="ddlselectCategory" id="ddlselectCategory" onchange="store_ddlSelect('ddlselectCategory')">
+            <option class="Income Expense">Select Category</option>
+            <option class="Income">Salary</option>
+            <option class="Expense">Food</option> 
+            <option class="Expense">Rent</option>
+            <option class="Expense">Entertainment</option>
+        </select>
+    </p>
+    
+    <span id="test_area3"></span>
+   
+    <p>
+        <label for="transactionAmount">Enter Amount</label>
+        <input type="number" id="transactionAmount"/>
+    </p>
+    <button onclick="storeTransaction()">Confirm Transaction</button>
+
+    <p id="test_area1"></p>
+    <p id="test_area2"></p>
+    <p id="test_area3"></p>
+</fieldset>
+
+<fieldset>
+    <table id="transactionTable">
+        <tr>
+            <th>Time & Date</th>
+            <th>Type</th>
+            <th>Category</th>
+            <th>Amount</th>
+        </tr>
+    </table>
+    <button onclick="afterText()">jQuery Test</button>
+    <button onclick="addRow()">jQuery Table Test</button>
+</fieldset>
+<p id="test_area4"></p>
+</fieldset>
 
 </html>

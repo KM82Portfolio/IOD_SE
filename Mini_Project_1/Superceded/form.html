@@ -5,12 +5,34 @@
 </head>
 
 <script>  
+    
     function store_ddlSelect(elemid){
         let sType = document.getElementById(elemid);
         selection=sType.options[sType.selectedIndex].value;
         localStorage.setItem("Type", selection);
         document.getElementById('test_area3').innerHTML=localStorage.getItem("Type");//testing only
     }
+    
+    function hook(main, sub) {
+        console.log(main, sub)
+        var mains = main.children(),
+            subs = sub.children().detach()
+        main.change(function() {
+            var val = $(this).val()
+            sub.empty()
+            subs.filter("." + val).clone().appendTo(sub)
+        }).change()
+    }
+
+    $(document).ready(function() {
+        // Select Segment to determine Pres
+        hook($("[name=segment]"), $("[name=pres]"))
+        // Select President to determine SVP
+        hook($("[name=pres]"), $("[name=svp]"))
+        // Select SVP to determine VP
+        hook($("[name=svp]"), $("[name=vp]"))
+    });
+
 </script>
 
 <fieldset id="fieldset_diceroll">

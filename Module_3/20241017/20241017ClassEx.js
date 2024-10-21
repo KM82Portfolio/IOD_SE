@@ -123,3 +123,20 @@ return rest.reduce(function (acc, val) {
 }
 
 console.log(add(1, 2, 4, 5, 6, 7,8));
+
+function makeAdder(x) { // function factory: bundles value of x into the scope of adder
+    return function adder(y) { // closure function 'adder' now has access to both x and y when created
+        return x + y;
+    };
+}
+
+let currSum = makeAdder(2)//initialize summation
+for(let i=0;i<6;i++){
+    console.log(currSum(i));
+}
+
+let cs1 = makeAdder(2)
+console.log(cs1(5))
+console.log(cs1(12))
+
+const dfd = require("danfojs-node")
