@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 
 <head>
-    
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script>  
+
+    $( document ).ready(function() {
+        let transactionTable = '{"transactionTable":[]}';//initialize Table of Transaction Details for user to fill in using form
+    });
 
     function store_ddlSelect(elemid){
         let sType = document.getElementById(elemid);
@@ -22,18 +26,37 @@
         document.getElementById('test_area3').innerHTML=localStorage.getItem("Amount");//test
     }
     //LONGER TERM SOLUTION TO STORE EACH ENTRY AS JSON OBJECT See Adding a new array element to a JSON object in OneNote
-    function getDate(){
-        let todaydate = new Date();
-        let day = todaydate.getDate();
-        let month = todaydate.getMonth() + 1;
-        let year = todaydate.getFullYear();
-        let time = todaydate.toLocaleTimeString();
-        return datestring = day + "/" + month + "/" + year+"/"+time;
+    
+    function logDate() {
+        $('#dateChecker').on('click', function(){
+        var date = new Date($('#transactionDatePicker').val());
+        day = date.getDate();
+        month = date.getMonth() + 1;
+        year = date.getFullYear();
+        transactionDate=[day, month, year].join('/')
+        localStorage.setItem("transactionDate", transactionDate);
+        });
+    };
+
+    function updateJSON(){
+        
+        //create string of new transaction object
+        let tt1="transactionDate:"+localStorage.getItem("transactionDate");
+        let tt2="ddlselectType"+localStorage.getItem("ddlselectType");
+        let tt3="ddlselectCategory"+localStorage.getItem("ddlselectCategory");
+        let tt4="Amount"+localStorage.getItem("Amount");
+        newTransaction= "{"+tt1+","+tt2+","+tt3+","+tt4+"}";
+        
+        //push new transaction object into existing transactionTable
+        let parse_obj = JSON.parse(transactionTable);
+        parse_obj['transactionTable'].push({"teamId":"4","status":"pending"});
+        transactionTable = JSON.stringify(parse_obj);
+        localStorage.setItem("transactionTable", transactionTable);
     }
     
     function addRow(){
         let tt1='<tr>';
-        let tt2=$('<td></td>').text(getDate());;
+        let tt2=$('<td></td>').text(localStorage.getItem("transactionDate"));;
         let tt3=$('<td></td>').text(localStorage.getItem("ddlselectType"));
         let tt4=$('<td></td>').text(localStorage.getItem("ddlselectCategory"));
         let tt5=$('<td></td>').text(localStorage.getItem("Amount"));
@@ -45,6 +68,11 @@
     
 
 <fieldset id="transactionDetails">
+
+    <label for="transactionDatePicker">Select Transaction Date</label>
+    <input type="date" id="transactionDatePicker" onchange="logDate()"/>
+    <button onclick="logDate()" id="dateChecker">Log Transaction Date</button>
+
     <Legend>Enter Income/Expense Details Here</Legend>
     <p>
         <label for="ddlselectType">Select Income/Expense</label>
