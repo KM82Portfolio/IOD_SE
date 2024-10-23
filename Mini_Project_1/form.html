@@ -2,82 +2,12 @@
 
 <head>
     <link rel="stylesheet" href="./css/style.css">
+    <link href="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.css" rel="stylesheet">
+    <script src="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.js"></script>
 </head>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script>  
-
-    $( document ).ready(function() {
-        //var transactionTable = '{"transactionTable":[]}';//initialize Table of Transaction Details for user to fill in using form
-        localStorage.setItem('transactionTable', '{"transactionTable":[]}');
-    });
-
-    document.addEventListener("DOMContentLoaded", function() {
-        localStorage.setItem('transactionTable', '{"transactionTable":[]}');
-    });
-
-    function store_ddlSelect(elemid){
-        let sType = document.getElementById(elemid);
-        selection=sType.options[sType.selectedIndex].value;
-        let selectionType=elemid.toString();
-        localStorage.setItem(selectionType, selection);
-        document.getElementById('test_area3').innerHTML=localStorage.getItem(selectionType);//testing only
-        return selection;
-    }
-
-    function storeTransaction(){//called by store transaction
-        transactionAmount = document.getElementById('transactionAmount').value;
-        localStorage.setItem("Amount", transactionAmount);
-        document.getElementById('test_area3').innerHTML=localStorage.getItem("Amount");//test
-    }
-    //LONGER TERM SOLUTION TO STORE EACH ENTRY AS JSON OBJECT See Adding a new array element to a JSON object in OneNote
-    
-    function logDate() {
-        $('#dateChecker').on('click', function(){
-        var date = new Date($('#transactionDatePicker').val());
-        day = date.getDate();
-        month = date.getMonth() + 1;
-        year = date.getFullYear();
-        transactionDate=[day, month, year].join('/')
-        localStorage.setItem("transactionDate", transactionDate);
-        });
-    };
-
-    function updateJSON(){
-        
-        //create string of new transaction object
-        let tt1="transactionDate:"+localStorage.getItem("transactionDate");
-        let tt2="ddlselectType"+localStorage.getItem("ddlselectType");
-        let tt3="ddlselectCategory"+localStorage.getItem("ddlselectCategory");
-        let tt4="Amount"+localStorage.getItem("Amount");
-        newTransaction= "{"+tt1+","+tt2+","+tt3+","+tt4+"}";
-
-        document.getElementById('test_area4').innerHTML=newTransaction + " 1"//test
-        
-        //push new transaction object into existing transactionTable
-        let transactionTable = localStorage.getItem('transactionTable');
-        let parse_obj = JSON.parse(transactionTable);
-        parse_obj['transactionTable'].push(newTransaction);
-        transactionTable = JSON.stringify(parse_obj);
-        localStorage.setItem("transactionTable", transactionTable);
-
-        document.getElementById('test_area5').innerHTML=transactionTable + " 2";//test
-        document.getElementById('test_area5').innerHTML=parse_obj + " 2";//test
-
-    }
-    
-    function addRow(){
-        let tt1='<tr>';
-        let tt2=$('<td></td>').text(localStorage.getItem("transactionDate"));;
-        let tt3=$('<td></td>').text(localStorage.getItem("ddlselectType"));
-        let tt4=$('<td></td>').text(localStorage.getItem("ddlselectCategory"));
-        let tt5=$('<td></td>').text(localStorage.getItem("Amount"));
-        let tt6='</tr>';
-        $('#transactionTable').after(tt1,tt2,tt3,tt4,tt5,tt6);
-    }
-
-</script>
-    
+<script src="./js/script.js"></script>
 
 <fieldset id="transactionDetails">
 
@@ -130,12 +60,14 @@
             <th>Amount</th>
         </tr>
     </table>
-    <button onclick="afterText()">jQuery Test</button>
     <button onclick="addRow()">jQuery Table Test</button>
 </fieldset>
 <button onclick="updateJSON()">updateJSON Test</button>
 <p id="test_area4"></p>
 <p id="test_area5"></p>
+<p id="test_area6"></p>
+<button onclick="runningBalance()">updateJSON Test</button>
+<p id="test_area7"></p>
 </fieldset>
 
 </html>
