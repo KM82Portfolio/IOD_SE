@@ -8,7 +8,12 @@
 <script>  
 
     $( document ).ready(function() {
-        let transactionTable = '{"transactionTable":[]}';//initialize Table of Transaction Details for user to fill in using form
+        //var transactionTable = '{"transactionTable":[]}';//initialize Table of Transaction Details for user to fill in using form
+        localStorage.setItem('transactionTable', '{"transactionTable":[]}');
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+        localStorage.setItem('transactionTable', '{"transactionTable":[]}');
     });
 
     function store_ddlSelect(elemid){
@@ -46,12 +51,19 @@
         let tt3="ddlselectCategory"+localStorage.getItem("ddlselectCategory");
         let tt4="Amount"+localStorage.getItem("Amount");
         newTransaction= "{"+tt1+","+tt2+","+tt3+","+tt4+"}";
+
+        document.getElementById('test_area4').innerHTML=newTransaction + " 1"//test
         
         //push new transaction object into existing transactionTable
+        let transactionTable = localStorage.getItem('transactionTable');
         let parse_obj = JSON.parse(transactionTable);
-        parse_obj['transactionTable'].push({"teamId":"4","status":"pending"});
+        parse_obj['transactionTable'].push(newTransaction);
         transactionTable = JSON.stringify(parse_obj);
         localStorage.setItem("transactionTable", transactionTable);
+
+        document.getElementById('test_area5').innerHTML=transactionTable + " 2";//test
+        document.getElementById('test_area5').innerHTML=parse_obj + " 2";//test
+
     }
     
     function addRow(){
@@ -121,7 +133,9 @@
     <button onclick="afterText()">jQuery Test</button>
     <button onclick="addRow()">jQuery Table Test</button>
 </fieldset>
+<button onclick="updateJSON()">updateJSON Test</button>
 <p id="test_area4"></p>
+<p id="test_area5"></p>
 </fieldset>
 
 </html>
