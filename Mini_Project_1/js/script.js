@@ -1,7 +1,36 @@
 document.addEventListener("DOMContentLoaded", function() {
+    
+    localStorage.clear();//reset localStorage on page load
     localStorage.setItem('transactionTable', '{"transactionTable":[]}');
     localStorage.setItem("runningTotal", 0);//initialize runningTotal when page loads
+    
+    $('#ddlselectType').change(
+        function(){ 
+            let sel = $(this).val();
+            if(sel=="Income"){
+                $('#ddlselectCategory').html(
+                    "<option>Select Category</option><option value='Salary'>Salary</option>"
+                )
+            }else if(sel=="Expense"){
+                $('#ddlselectCategory').html(
+                    "<option>Select Category</option><option value='Food'>Food</option><option value='Rent'>Rent</option><option value='Rent'>Entertainment</option>"
+                )
+            }
+        }
+    )
 });
+
+function logDate() {
+    $('#dateChecker').on('click', function(){
+        var date = new Date($('#transactionDatePicker').val());
+        day = date.getDate();
+        month = date.getMonth() + 1;
+        year = date.getFullYear();
+        transactionDate=[day, month, year].join('/')
+        localStorage.setItem("transactionDate", transactionDate);
+    });
+    return transactionDate;
+};
 
 function store_ddlSelect(elemid){
     let sType = document.getElementById(elemid);
@@ -20,18 +49,6 @@ function storeTransaction(){//called by store transaction
 
     return transactionAmount;
 }
-
-function logDate() {
-    $('#dateChecker').on('click', function(){
-        var date = new Date($('#transactionDatePicker').val());
-        day = date.getDate();
-        month = date.getMonth() + 1;
-        year = date.getFullYear();
-        transactionDate=[day, month, year].join('/')
-        localStorage.setItem("transactionDate", transactionDate);
-    });
-    return transactionDate;
-};
 
 function updateJSON(){
 
@@ -57,8 +74,6 @@ function updateJSON(){
     jsonParsed=JSON.parse(tT);
     document.getElementById('test_area6').innerHTML=jsonParsed.transactionTable.transactionDate+ " 3";//test
 
-    
-
 }
 
 function addRow(){
@@ -71,18 +86,14 @@ function addRow(){
     let tt6='</tr>';
     $('#transactionTable').after(tt1,tt2,tt3,tt4,tt5,tt6);
     
-    const latestUpdateAmount = Number(localStorage.getItem("Amount"))
+    let lUA = Number(localStorage.getItem("Amount"))
     //document.getElementById('test_area7').innerHTML=runningCount(latestUpdateAmount);//test
+    if(localStorage.getItem("ddlselectType")=='Expense'){latestUpdateAmount=-1*lUA;}
+    else {latestUpdateAmount=lUA;}
 
     let runningTotal = Number(localStorage.getItem("runningTotal"));
     let latestRunningTotal = runningTotal+latestUpdateAmount;
     localStorage.setItem("runningTotal", latestRunningTotal);
-    document.getElementById('test_area7').innerHTML=latestRunningTotal + "RUNNING TOTAL";//test
+    document.getElementById('test_area7').innerHTML=latestRunningTotal + "   RUNNING TOTAL";//test
 
-}
-
-function runningBalance(latestUpdate){
-    return function Adder(penultimate){
-        return penultimate+latestUpdate;
-    };
 }
