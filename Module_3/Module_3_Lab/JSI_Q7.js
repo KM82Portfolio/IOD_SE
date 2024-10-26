@@ -6,41 +6,34 @@ const books = [
     { id: 5, title: 'The Catcher in the Rye', author: 'J.D. Salinger', year: 1951 }, 
 ];
 // Q7a) Write a function getBookTitle(bookId) that uses the find function to return the title of the book object with the matching id.
-// function getBookTitle(bookId){
-//     let bookToFind = books.find(tf=>tf.id==bookId)
-//     return bookToFind.title
-// }
+function getBookTitle(bookId){
+    let bookToFind = books.find(tf=>tf.id==bookId)
+    return bookToFind.title
+}
 
-// console.log(getBookTitle(1))
+console.log(getBookTitle(1))
 
 // // Q7b) Write a function getOldBooks() that uses the filter function to return all book objects written before 1950.
-// function getOldBooks(){
-//     let bookToFind = books.find(tf=>tf.year<1950)
-//     return bookToFind.title
-// }
-
-// console.log(getOldBooks())
-
-// // Q7c) Write a function addGenre() that uses the map function to add a new genre property to all of the above books, with the value ‘classic’.
-// function addGenre(){
-//     let newBookArray = books.map(bk=>({...bk,genre:'classic'}))
-//     return newBookArray
-// }
-// let newBookArray = addGenre()
-// console.log(newBookArray)
-// function getTitles(authorInitial){
-
-function extractInitials(stringtoExtractFrom){
-    [s1,s2] = stringtoExtractFrom.split(' ');
-    s1=s1.charAt(0);
-    s2=s2.charAt(0);
-    return [s1,s2].join('');
+function getOldBooks(){
+    let bookToFind = books.find(tf=>tf.year<1950)
+    return bookToFind.title
 }
 
-function getTitles(){
-    // extract author initials 1st into array
-    let renamedAuthors = books.map((bk)=>extractInitials(bk.author))
-    console.log(renamedAuthors)
-    // let newBookArray = books.filter((authorInitial)=>({...bk,genre:'classic'}))
+console.log(getOldBooks())
+
+// Q7c) Write a function addGenre() that uses the map function to add a new genre property to all of the above books, with the value ‘classic’.
+function addGenre(){
+    let newBookArray = books.map(bk=>({...bk,genre:'classic'}))
+    return newBookArray
 }
-getTitles()
+let newBookArray = addGenre()
+console.log(newBookArray)
+
+// Q7d) (Extension) Write a function getTitles(authorInitial) that uses map and filter together to return an array of book titles for books written by 
+// authors whose names start with authorInitial.
+function getTitles(authorInitial,books){ //added books as argument to make function usable on other arrays of objects
+    return books.filter((b)=>b.author.startsWith(authorInitial)).map((b)=>b.title);
+}
+console.log(getTitles('F.',books))
+
+// Q7e) (Extension) Write a function latestBook() that uses find and forEach to get the book with the most recent publication date.
