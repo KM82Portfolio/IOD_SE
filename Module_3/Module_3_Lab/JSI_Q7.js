@@ -28,12 +28,23 @@ function addGenre(){
 }
 let newBookArray = addGenre()
 console.log(newBookArray)
+console.log(`
+`)
 
 // Q7d) (Extension) Write a function getTitles(authorInitial) that uses map and filter together to return an array of book titles for books written by 
 // authors whose names start with authorInitial.
 function getTitles(authorInitial,books){ //added books as argument to make function usable on other arrays of objects
     return books.filter((b)=>b.author.startsWith(authorInitial)).map((b)=>b.title);
-}
+}   
 console.log(getTitles('F.',books))
+console.log(`
+`)
 
 // Q7e) (Extension) Write a function latestBook() that uses find and forEach to get the book with the most recent publication date.
+// Just bubble sort
+function latestBook(books){
+    let latestBook = books[0];
+    books.forEach((b)=>b.year>latestBook.year ? latestBook=b:latestBook=latestBook);
+    return latestBook;
+}   
+console.log(latestBook(books))
