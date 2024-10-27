@@ -4,10 +4,10 @@
     <link rel="stylesheet" href="./css/style.css">
     <link href="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.css" rel="stylesheet">
     <script src="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="./js/script.js"></script>
 </head>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="./js/script.js"></script>
 
 <fieldset id="transactionDetails">
 
@@ -52,7 +52,7 @@
 </fieldset>
 
 <fieldset>
-    <table id="transactionTable" class="table-responsive">
+    <table id="transactionTable">
         <tr>
             <th>Time & Date</th>
             <th>Type</th>
@@ -60,16 +60,13 @@
             <th>Amount</th>
         </tr>
     </table>
-    <button id="btnUpdTbl" onclick="addRow()">jQuery Table Test</button>
+    <button onclick="addRow()">jQuery Table Test</button>
 </fieldset>
 <button onclick="updateJSON()">updateJSON Test</button>
-<button onclick="updateArray()" id="btnUpdateArrayTest">updateArray Test</button>
 <p id="test_area4"></p>
 <p id="test_area5"></p>
 <p id="test_area6"></p>
 <p id="test_area7"></p>
-<p id="test_area8"></p>
-<p id="test_area11"></p>
 </fieldset>
 
 </html>

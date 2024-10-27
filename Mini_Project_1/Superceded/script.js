@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     
     localStorage.clear();//reset localStorage on page load
-    var transactionTable = []; //initialize transaction table
     localStorage.setItem('transactionTable', '{"transactionTable":[]}');
     localStorage.setItem("runningTotal", 0);//initialize runningTotal when page loads
     
@@ -20,8 +19,8 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     $('#btnUpdTbl').click(function(){
+
         
-        updateArray();
         
         let tt1='<tr>';
         let tt2=$('<td></td>').text(localStorage.getItem("transactionDate"));;
@@ -43,27 +42,6 @@ document.addEventListener("DOMContentLoaded", function() {
         $('#test_area7').html(latestRunningTotal + "   RUNNING TOTAL")
         // document.getElementById('test_area7').innerHTML=latestRunningTotal + "   RUNNING TOTAL";//test
     });
-
-    $('#btnUpdateArrayTest').click(function(){
-        
-        $('#test_area11').html(transactionTable); //check before
-        // $('#test_area11').html('TEST TEST TEST');
-
-        // let transactionTable = localStorage.getItem('transactionTable');
-        // let parse_obj = JSON.parse(transactionTable);
-        transactionTable.push(
-        // parse_obj['transactionTable'].push(
-            {
-                "transactionDate":localStorage.getItem("transactionDate"),
-                "ddlselectType":localStorage.getItem("ddlselectType"),
-                "ddlselectCategory":localStorage.getItem("ddlselectCategory"),
-                "Amount":localStorage.getItem("Amount")
-            }
-        );
-
-        $('#test_area11').html(transactionTable); //Test : Check results of push()
-    
-    })
     
 });
 
@@ -125,19 +103,34 @@ function updateJSON(){
 
 }
 
-function updateArray(){
+// function addRow(){
     
-    let transactionTable = localStorage.getItem('transactionTable');
-    let parse_obj = JSON.parse(transactionTable);
-    parse_obj['transactionTable'].push(
-        {
-            "transactionDate":localStorage.getItem("transactionDate"),
-            "ddlselectType":localStorage.getItem("ddlselectType"),
-            "ddlselectCategory":localStorage.getItem("ddlselectCategory"),
-            "Amount":localStorage.getItem("Amount")
-        }
-    );
+//     logDate();
+//     storeTransaction();
+    
+//     let tt1='<tr>';
+//     let tt2=$('<td></td>').text(localStorage.getItem("transactionDate"));;
+//     let tt3=$('<td></td>').text(localStorage.getItem("ddlselectType"));
+//     let tt4=$('<td></td>').text(localStorage.getItem("ddlselectCategory"));
+//     let tt5=$('<td></td>').text(localStorage.getItem("Amount"));
+//     let tt6='</tr>';
+//     $('#transactionTable').after(tt1,tt2,tt3,tt4,tt5,tt6);
+    
+//     let lUA = Number(localStorage.getItem("Amount"))
+//     //document.getElementById('test_area7').innerHTML=runningCount(latestUpdateAmount);//test
+//     if(localStorage.getItem("ddlselectType")=='Expense'){latestUpdateAmount=-1*lUA;}
+//     else {latestUpdateAmount=lUA;}
 
-    $('#test_area11').html(transactionTable); //Test : Check results of push()
-    
-}
+//     let runningTotal = Number(localStorage.getItem("runningTotal"));
+//     let latestRunningTotal = runningTotal+latestUpdateAmount;
+//     localStorage.setItem("runningTotal", latestRunningTotal);
+//     document.getElementById('test_area7').innerHTML=latestRunningTotal + "   RUNNING TOTAL";//test
+
+// }
+
+// $("#transactionTable").DataTable({
+//     "scrollY": "500px",
+//     "scrollCollapse": true,
+//     "paging": false,
+//     "dom": "<'table-responsive'tr>"
+// });
