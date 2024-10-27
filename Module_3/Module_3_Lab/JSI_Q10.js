@@ -28,6 +28,6 @@ function calculateAge(dateArg){
 
     return [ageYears,ageMonths,ageDays]
 }
-const birthDate = new Date('1982-11-02');
+const birthDate = new Date('1988-11-11');
 let [ageYears,ageMonths,ageDays] = calculateAge(birthDate)
 console.log(`I am ${ageYears} years, ${ageMonths} months & ${ageDays} days old`);
