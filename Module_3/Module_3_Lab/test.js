@@ -7,32 +7,18 @@ wakeupTime = new Intl.DateTimeFormat('en-US', {
 
 console.log(wakeupTime);
 
-function main(num) {
-    let i = num;
-    return {
-      add: function (num) {
-        i += num;
-        return this;
-      },
-      subtract: function (num) {
-        i -= num;
-        return this;
-      },
-      divide: function (num) {
-        i /= num;
-        return this;
-      },
-      multiple: function (num) {
-        i *= num;
-        return this;
-      },
-      print() {
-        return i;
-      },
-    };
-  }
-  
-  const x = main(10)
-  const res = x.add(6).subtract(4).divide(3).multiple(2).print();
-  
-  cosole.log(res)
+ const rightNow = new Date()
+ console.log(rightNow)
+ console.log(rightNow.getFullYear())
+ console.log(rightNow.getMonth())
+const newDateDays = new Date(rightNow.getFullYear(),rightNow.getMonth(),0).getDate()
+console.log(newDateDays)
+const testDate = new Date(rightNow.getFullYear(),rightNow.getMonth(),0)
+console.log(testDate)
+console.log(`
+`)
+const daysMonthBefore = (y, m) => new Date(y, m, 0);
+daysMonthBefore(rightNow.getFullYear(), rightNow.getMonth());
+
+const printThis = (msg)=>{console.log(msg)}
+printThis('TEST MESSAGE')
