@@ -23,7 +23,7 @@ function calculateAge(dateArg){
     }
     if(ageMonths<0) {
         ageYears--; //not yet the full month to be added to date
-        ageMonths += new Date(currentDate.getMonth(),currentDate.getDate(),0).getDate() //number of days in previous month
+        ageMonths += 12 //number of months in previous year
     }
 
     return [ageYears,ageMonths,ageDays]
