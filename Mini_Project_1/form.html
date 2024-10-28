@@ -1,75 +1,91 @@
 <!DOCTYPE html>
-
+<html lang="en">
 <head>
-    <link rel="stylesheet" href="./css/style.css">
-    <link href="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.css" rel="stylesheet">
-    <script src="https://cdn.datatables.net/v/dt/dt-2.1.8/datatables.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="./js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./script.js" defer></script> 
+    <title>Transaction Manager</title>
 </head>
-
+<body>
 
 <fieldset id="transactionDetails">
+    <legend>Transaction Details</legend>
 
     <label for="transactionDatePicker">Select Transaction Date</label>
     <input type="date" id="transactionDatePicker" onchange="logDate()"/>
-    <button onclick="logDate()" id="dateChecker">Log Transaction Date</button>
+    <button id="dateChecker" onclick="logDate()">Log Transaction Date</button>
 
-    <Legend>Enter Income/Expense Details Here</Legend>
     <p>
-        <label for="ddlselectType">Select Income/Expense</label>
+        <label for="ddlselectType" class="ddlClass">Select Income/Expense</label>
         <select name="ddlselectType" id="ddlselectType" onchange="store_ddlSelect('ddlselectType')">
             <option>Select Income/Expense</option>
             <option value='Income'>Income</option>
             <option value='Expense'>Expense</option>
         </select>
     </p>
-    
-    <span id="test_area2"></span>
-    
+
     <p>
-        <label for="ddlselectCategory">Select Income/Expense Category</label>
+        <label for="ddlselectCategory" class="ddlClass">Select Income/Expense Category</label>
         <select name="ddlselectCategory" id="ddlselectCategory" onchange="store_ddlSelect('ddlselectCategory')">
             <option>Select Category</option>
             <option value='Salary'>Salary</option>
             <option value='Food'>Food</option> 
             <option value='Rent'>Rent</option>
-            <option value='Rent'>Entertainment</option>
+            <option value='Entertainment'>Entertainment</option>
         </select>
     </p>
-    
-    <span id="test_area3"></span>
-   
+
     <p>
         <label for="transactionAmount">Enter Amount</label>
-        <input type="number" id="transactionAmount"/>
+        <input type="number" id="transactionAmount" min="0" required />
     </p>
     <button onclick="storeTransaction()">Confirm Amount</button>
 
     <p id="test_area1"></p>
-    <p id="test_area2"></p>
     <p id="test_area3"></p>
 </fieldset>
 
-<fieldset>
+<fieldset id="transactionRecord">
+    <legend>Transaction Record</legend>
     <table id="transactionTable" class="table-responsive">
-        <tr>
-            <th>Time & Date</th>
-            <th>Type</th>
-            <th>Category</th>
-            <th>Amount</th>
-        </tr>
+        <thead>
+            <tr>
+                <th onclick="sortTable(0)">Time & Date</th>
+                <th onclick="sortTable(1)">Type</th>
+                <th onclick="sortTable(2)">Category</th>
+                <th onclick="sortTable(3)">Amount</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
     </table>
-    <button id="btnUpdTbl" onclick="addRow()">jQuery Table Test</button>
+    <p class="btnP">
+        <button id="btnUpdTbl" onclick="logTransaction()">Add Transaction</button>
+    </p>
+    <p class="btnP">
+        <button onclick="convertCurrency()">Convert USD</button>
+    </p>
 </fieldset>
-<button onclick="updateJSON()">updateJSON Test</button>
-<button onclick="updateArray()" id="btnUpdateArrayTest">updateArray Test</button>
+
+<div>
+    <h3 id="runningTotalDiv">Running Total:<br> 
+        <span id="runningTotal">0</span>
+    </h3>
+    <canvas id="transactionChart" width="400" height="200"></canvas> 
+</div>
+
+<button onclick="updateJSON()">Update JSON Test</button>
+<button onclick="updateArray()" id="btnUpdateArrayTest">Update Array Test</button>
 <p id="test_area4"></p>
 <p id="test_area5"></p>
 <p id="test_area6"></p>
 <p id="test_area7"></p>
 <p id="test_area8"></p>
 <p id="test_area11"></p>
-</fieldset>
 
+<script src="./script.js" defer></script> 
+</body>
 </html>
