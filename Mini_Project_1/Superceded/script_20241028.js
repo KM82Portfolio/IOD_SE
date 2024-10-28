@@ -112,13 +112,17 @@ function sortArrayDate(SortDir){
     updateTable();
 }
 
-function sortArrayAmt(SortDir){
-    transactionArray.sort((a,b)=>{
-        if(SortDir===1){
+// Sort table by column
+function sortTable(colIndex) {
+    transactionArray.sort((a, b) => {
+        if (colIndex === 0) {
+            return new Date(a.date) - new Date(b.date);
+        } else if (colIndex === 1) {
+            return a.type.localeCompare(b.type);
+        } else if (colIndex === 2) {
+            return a.category.localeCompare(b.category);
+        } else if (colIndex === 3) {
             return a.amount - b.amount;
-         }
-         else if(SortDir===2){
-            return b.amount - a.amount;
         }
     });
     updateTable();
@@ -140,7 +144,7 @@ function convertCurrency() {
 // Chart setup
 let myChart;
 function createChart() {
-
+    
     const ctx = document.getElementById('transactionChart').getContext('2d');
     myChart = new Chart(ctx, {//need myChart object for updateChart() to use later
         type: 'bar', 
@@ -164,41 +168,4 @@ function updateChart() {
     myChart.data.datasets[0].data = data;
     myChart.update();
 
-}
-
-let transactions = []; 
-
-function updateCategoryChart() {
-    const startDate = new Date(document.getElementById("startDatePicker").value);
-    const endDate = new Date(document.getElementById("endDatePicker").value);
-    
-    const categoryTotals = {};
-
-    transactions.forEach(transaction => {
-        const transactionDate = new Date(transaction.date); 
-        if (transactionDate >= startDate && transactionDate <= endDate) {
-            const category = transaction.category; 
-            const amount = transaction.amount; 
-            
-            if (!categoryTotals[category]) {
-                categoryTotals[category] = 0;
-            }
-            categoryTotals[category] += amount;
-        }
-    });
-
-    const categories = Object.keys(categoryTotals);
-    const amounts = categories.map(cat => categoryTotals[cat]);
-
-    const ctx = document.getElementById('categoryChart').getContext('2d');
-    new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: categories,
-            datasets: [{
-                label: 'Total Amount by Category',
-                data: amounts
-            }]
-        }
-    });
 }

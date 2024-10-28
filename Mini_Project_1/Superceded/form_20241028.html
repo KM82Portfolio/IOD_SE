@@ -50,17 +50,13 @@
 
 <fieldset id="transactionRecord">
     <legend>Transaction Record</legend>
-    <button id="sortDateAscending" onclick="sortArrayDate(1)">Sort Date Ascending</button>
-    <button id="sortDateDescending" onclick="sortArrayDate(2)">Sort Date Descending</button>
-    <button id="sortAmtAscending" onclick="sortArrayAmt(1)">Sort Amount Ascending</button>
-    <button id="sortAmtDescending" onclick="sortArrayAmt(2)">Sort Amount Descending</button>
     <table id="transactionTable" class="table-responsive">
         <thead>
             <tr>
-                <th>Time & Date</th>
-                <th>Type</th>
-                <th>Category</th>
-                <th>Amount</th>
+                <th onclick="sortTable(0)">Time & Date</th>
+                <th onclick="sortTable(1)">Type</th>
+                <th onclick="sortTable(2)">Category</th>
+                <th onclick="sortTable(3)">Amount</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -80,20 +76,6 @@
     </h3>
     <canvas id="transactionChart" width="400" height="200"></canvas> 
 </div>
-
-<fieldset id="dateRange">
-    <legend>Select Date Range for Category Chart</legend>
-    <label for="startDatePicker">Start Date</label>
-    <input type="date" id="startDatePicker" />
-
-    <label for="endDatePicker">End Date</label>
-    <input type="date" id="endDatePicker" />
-
-    <button onclick="updateCategoryChart()">Generate Category Chart</button>
-</fieldset>
-
-<canvas id="categoryChart" width="400" height="200"></canvas>
-
 
 <button onclick="updateJSON()">Update JSON Test</button>
 <button onclick="updateArray()" id="btnUpdateArrayTest">Update Array Test</button>
