@@ -130,15 +130,39 @@ function sortArrayAmt(SortDir){
 
 // Currency conversion
 function convertCurrency() {
-    let factor = Math.random() * (1.5 - 0.5) + 0.5; 
-    transactionArray = transactionArray.map(t => {
-        t.amount *= factor;
-        return t;
-    });
+
+    let currencyRate = Math.random()*(1.5 - .5) + 1; 
+    
+    // Just overwrite transactionArray with new map()
+    setTimeout(()=>{
+        transactionArray = transactionArray.map(t => {
+            t.amount *= currencyRate;
+            return t;
+        });
+        
+    },2000);
+
+    
+    retrievingCurrencyMessage(1000,3);//simulate currency rate retrieval
+
     updateArray();
     updateTable();
     updateRunningTotal();
     updateChart(); 
+}
+
+function retrievingCurrencyMessage(delay,limit){
+    let c = 0;
+    let intervalTimer = setInterval(()=>{
+            $('#retrievingCurrency').html('Retrieving Currency')//this keeps refreshing message until clearInterval() called
+            if(c==limit){ 
+                $('#retrievingCurrency').html('Currency Retrieved');
+                clearInterval(intervalTimer);
+            }
+            c++;
+        },
+        delay
+    );
 }
 
 // Chart setup
