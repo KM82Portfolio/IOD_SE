@@ -5,8 +5,7 @@ $(document).ready(function() {
     // Clear localStorage and initialize the application
     localStorage.clear(); 
     updateRunningTotalDisplay();
-    createChart(); //create empty transaction Chart
-    createCategoryChart(); //create empty category Chart
+    createChart(); 
 });
 
 // Change Category options available based on Type selection
@@ -48,7 +47,6 @@ function logTransaction() {
         updateTable();
         updateRunningTotal();
         updateChart(); // Update chart after adding a transaction
-        updateCatChart();
         $('#transactionAmount').val('');    
         transactionArrayStringified = JSON.stringify(transactionArray)
         $('#test_area11').html(transactionArrayStringified); 
@@ -166,8 +164,9 @@ function retrievingCurrencyMessage(delay,limit){
         delay
     );
 }
-let myChart;
+
 // Chart setup
+let myChart;
 function createChart() {
 
     const ctx = document.getElementById('transactionChart').getContext('2d');
@@ -184,48 +183,6 @@ function createChart() {
     });
 }
 
-function getCatLabels () {
-    let labels = []
-    transactionArray.forEach(tran => {
-        if(!labels.includes(tran.category)){
-            labels.push(tran.category)
-        }
-    })
-    return labels
-}
-
-function getCategoryWiseAmount(){
-    let catAmt = {}; 
-    transactionArray.forEach(tran=>{
-        if(Object.keys(catAmt).includes(tran.category)){ //1st iteration, this will evaluate false as catAmt will be an empty obj
-            catAmt[tran.category]+=tran.amount;
-        }else{//1st iteration, catAmt{} will have a key tran.category (e.g. Salary,Food etc) created & assigned the value for that key for the current transaction that forEach is at now
-            catAmt[tran.category]=tran.amount; 
-        }
-    })
-    console.log(catAmt);
-    return Object.values(catAmt); //returns an array where each element is the total amount of that category, already in the correct order due to if else above
-    // return catAmt; //catAmt already has keys (for chart labels) & values (chart value), can actually combine getCatLabels () & getCategoryWiseAmount() 
-}
-
-let myCatChart;
-function createCategoryChart(){
-    const ctx = document.getElementById('categoryChart').getContext('2d');
-    myCatChart = new Chart({
-        ctx ,
-        type:"bar",
-        data:{
-            labels : getCatLabels(),
-            datasets :[{
-                label: "Amount By Category",
-                data: getCategoryWiseAmount(),
-                borderWidth: 1
-            }]
-        }
-    })
-}
-
-
 function updateChart() {
 
     const labels = transactionArray.map((transaction) => `${transaction.category}`);
@@ -237,13 +194,54 @@ function updateChart() {
 
 }
 
-function updateCatChart(){
-    
-    const labels =  getCatLabels()
-    const data = getCategoryWiseAmount()
-    
-    myCatChart.data.labels = labels;
-    myCatChart.data.datasets[0].data = data;
-    myCatChart.update();
+function updateCategoryChart() {
 
+    $('#test_area11').html(transactionArray);
+
+    const startDate = new Date($('#startDatePicker').val());
+    const endDate = new Date($('#endDatePicker').val());
+    
+    const totalByCategory = {};
+
+    // Loop through each trnsaction toupdate the relevant category
+    transactionArray.forEach((transaction) => {
+
+        const transactionDate = new Date(transaction.date);
+
+        if (transactionDate >= startDate && transactionDate <= endDate) {
+
+            const category = transaction.category; 
+            const amount = transaction.amount; 
+            
+        //    create category if no transaction of that category logged before
+            if (!totalByCategory[category]) {
+                totalByCategory[category] = 0;
+            }
+            totalByCategory[category] += amount;
+        }
+    });
+
+    const categories = Object.keys(totalByCategory);
+    const amounts = categories.map(cat => totalByCategory[cat]);
+
+    // Redraw category chart every update
+    const ctx = document.getElementById('categoryChart').getContext('2d');
+
+    // Check if the chart already exists
+    if (myCategoryChart) {
+        myCategoryChart.data.labels = categories;
+        myCategoryChart.data.datasets[0].data = amounts;
+        myCategoryChart.update();
+    } else {
+        myCategoryChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: categories,
+                datasets: [{
+                    label: 'Total Amount by Category',
+                    data: amounts
+                }]
+            }
+        });
+    }
 }

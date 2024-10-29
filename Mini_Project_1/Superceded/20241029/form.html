@@ -77,8 +77,7 @@
         <span id="runningTotal">0</span>
     </h3>
     <p id="retrievingCurrency"></p>
-    <canvas id="transactionChart" width="200" height="100"></canvas> 
-    
+    <canvas id="transactionChart" width="400" height="200"></canvas> 
 </div>
 
 <fieldset id="dateRange">
@@ -89,13 +88,10 @@
     <label for="endDatePicker">End Date</label>
     <input type="date" id="endDatePicker" />
 
-    <button onclick="updateCatChart()">Aggregate By Categories</button>
+    <button onclick="updateCategoryChart()">Aggregate By Categories</button>
 </fieldset>
 
-<div>
-    <canvas id="categoryChart" width="200" height="100"></canvas>
-
-</div>
+<canvas id="categoryChart" width="400" height="200"></canvas>
 
 
 <button onclick="updateJSON()">Update JSON Test</button>
