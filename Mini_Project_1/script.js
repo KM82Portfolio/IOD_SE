@@ -47,7 +47,11 @@ function logTransaction() {
         updateTable();
         updateRunningTotal();
         updateChart(); // Update chart after adding a transaction
-        $('#transactionAmount').val(''); 
+        $('#transactionAmount').val('');    
+        transactionArrayStringified = JSON.stringify(transactionArray)
+        $('#test_area11').html(transactionArrayStringified); 
+        // $('#test_area11').html('TEST TEST TEST'); 
+        console.log('TEST TEST TEST');
     } 
 }
 
@@ -157,8 +161,8 @@ function createChart() {
 
 function updateChart() {
 
-    const labels = transactionArray.map(transaction => `${transaction.category}`);
-    const data = transactionArray.map(transaction => transaction.amount);
+    const labels = transactionArray.map((transaction) => `${transaction.category}`);
+    const data = transactionArray.map((transaction) => transaction.amount);
     
     myChart.data.labels = labels;
     myChart.data.datasets[0].data = data;
@@ -166,39 +170,54 @@ function updateChart() {
 
 }
 
-let transactions = []; 
-
 function updateCategoryChart() {
-    const startDate = new Date(document.getElementById("startDatePicker").value);
-    const endDate = new Date(document.getElementById("endDatePicker").value);
-    
-    const categoryTotals = {};
 
-    transactions.forEach(transaction => {
-        const transactionDate = new Date(transaction.date); 
+    $('#test_area11').html(transactionArray);
+
+    const startDate = new Date($('#startDatePicker').val());
+    const endDate = new Date($('#endDatePicker').val());
+    
+    const totalByCategory = {};
+
+    // Loop through each trnsaction toupdate the relevant category
+    transactionArray.forEach((transaction) => {
+
+        const transactionDate = new Date(transaction.date);
+
         if (transactionDate >= startDate && transactionDate <= endDate) {
+
             const category = transaction.category; 
             const amount = transaction.amount; 
             
-            if (!categoryTotals[category]) {
-                categoryTotals[category] = 0;
+        //    create category if no transaction of that category logged before
+            if (!totalByCategory[category]) {
+                totalByCategory[category] = 0;
             }
-            categoryTotals[category] += amount;
+            totalByCategory[category] += amount;
         }
     });
 
-    const categories = Object.keys(categoryTotals);
-    const amounts = categories.map(cat => categoryTotals[cat]);
+    const categories = Object.keys(totalByCategory);
+    const amounts = categories.map(cat => totalByCategory[cat]);
 
+    // Redraw category chart every update
     const ctx = document.getElementById('categoryChart').getContext('2d');
-    new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: categories,
-            datasets: [{
-                label: 'Total Amount by Category',
-                data: amounts
-            }]
-        }
-    });
+
+    // Check if the chart already exists
+    if (myCategoryChart) {
+        myCategoryChart.data.labels = categories;
+        myCategoryChart.data.datasets[0].data = amounts;
+        myCategoryChart.update();
+    } else {
+        myCategoryChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: categories,
+                datasets: [{
+                    label: 'Total Amount by Category',
+                    data: amounts
+                }]
+            }
+        });
+    }
 }
