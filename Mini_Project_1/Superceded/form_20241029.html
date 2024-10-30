@@ -13,13 +13,13 @@
 
 <fieldset id="transactionDetails">
     <legend>Transaction Details</legend>
-    
+
     <label for="transactionDatePicker">Select Transaction Date</label>
-    <input type="date" id="transactionDatePicker" />
-    
+    <input type="date" id="transactionDatePicker" onchange="logDate()"/>
+
     <p>
         <label for="ddlselectType" class="ddlClass">Select Income/Expense</label>
-        <select name="ddlselectType" id="ddlselectType">
+        <select name="ddlselectType" id="ddlselectType" onchange="store_ddlSelect('ddlselectType')">
             <option>Select Income/Expense</option>
             <option value='Income'>Income</option>
             <option value='Expense'>Expense</option>
@@ -28,7 +28,7 @@
 
     <p>
         <label for="ddlselectCategory" class="ddlClass">Select Income/Expense Category</label>
-        <select name="ddlselectCategory" id="ddlselectCategory">
+        <select name="ddlselectCategory" id="ddlselectCategory" onchange="store_ddlSelect('ddlselectCategory')">
             <option>Select Category</option>
             <option value='Salary'>Salary</option>
             <option value='Food'>Food</option> 
@@ -41,7 +41,9 @@
         <label for="transactionAmount">Enter Amount</label>
         <input type="number" id="transactionAmount" min="0" required />
     </p>
-    <button id="btnUpdTbl">Add Transaction</button>
+
+    <p id="test_area1"></p>
+    <p id="test_area3"></p>
 </fieldset>
 
 <fieldset id="transactionRecord">
@@ -63,7 +65,10 @@
         <tbody></tbody>
     </table>
     <p class="btnP">
-        <button onclick="convertCurrency()">Convert Currency</button>
+        <button id="btnUpdTbl" onclick="logTransaction()">Add Transaction</button>
+    </p>
+    <p class="btnP">
+        <button onclick="convertCurrency()">Convert USD</button>
     </p>
 </fieldset>
 
@@ -71,6 +76,7 @@
     <h3 id="runningTotalDiv">Running Total:<br> 
         <span id="runningTotal">0</span>
     </h3>
+    <p id="retrievingCurrency"></p>
     <canvas id="transactionChart" width="400" height="200"></canvas> 
 </div>
 
@@ -87,6 +93,9 @@
 
 <canvas id="categoryChart" width="400" height="200"></canvas>
 
+
+<button onclick="updateJSON()">Update JSON Test</button>
+<button onclick="updateArray()" id="btnUpdateArrayTest">Update Array Test</button>
 <p id="test_area4"></p>
 <p id="test_area5"></p>
 <p id="test_area6"></p>
@@ -94,5 +103,6 @@
 <p id="test_area8"></p>
 <p id="test_area11"></p>
 
+<script src="./script.js" defer></script> 
 </body>
 </html>

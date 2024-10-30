@@ -10,12 +10,13 @@ $(document).ready(function() {
 
 // Change Category options available based on Type selection
 $('#ddlselectType').change(function() {
+    // Update category dropdown based on selection
     let sel = $(this).val();
-    if (sel === "Income") {
+    if (sel == "Income") {
         $('#ddlselectCategory').html(
             "<option>Select Category</option><option value='Salary'>Salary</option>"
         );
-    } else if (sel === "Expense") {
+    } else if (sel == "Expense") {
         $('#ddlselectCategory').html(
             "<option>Select Category</option><option value='Food'>Food</option><option value='Rent'>Rent</option><option value='Entertainment'>Entertainment</option>"
         );
@@ -25,8 +26,9 @@ $('#ddlselectType').change(function() {
 // Push everything recorded in form to transactionArray
 $('#btnUpdTbl').click(logTransaction);
 
-// Push Transaction into transactionArray
+// Push Transaction into transactionArray Array
 function logTransaction() {
+    
     let date = $('#transactionDatePicker').val();
     let type = $('#ddlselectType').val();
     let category = $('#ddlselectCategory').val();
@@ -44,8 +46,12 @@ function logTransaction() {
         updateArray();
         updateTable();
         updateRunningTotal();
-        updateChart(); 
-        $('#transactionAmount').val(''); 
+        updateChart(); // Update chart after adding a transaction
+        $('#transactionAmount').val('');    
+        transactionArrayStringified = JSON.stringify(transactionArray)
+        $('#test_area11').html(transactionArrayStringified); 
+        // $('#test_area11').html('TEST TEST TEST'); 
+        console.log('TEST TEST TEST');
     } 
 }
 
@@ -98,22 +104,24 @@ function updateArray() {
     updateJSON(); 
 }
 
-function sortArrayDate(SortDir) {
-    transactionArray.sort((a, b) => {
-        if (SortDir === 1) {
+function sortArrayDate(SortDir){
+    transactionArray.sort((a,b)=>{
+        if(SortDir===1){
             return new Date(a.date) - new Date(b.date);
-        } else if (SortDir === 2) {
+         }
+         else if(SortDir===2){
             return new Date(b.date) - new Date(a.date);
         }
     });
     updateTable();
 }
 
-function sortArrayAmt(SortDir) {
-    transactionArray.sort((a, b) => {
-        if (SortDir === 1) {
+function sortArrayAmt(SortDir){
+    transactionArray.sort((a,b)=>{
+        if(SortDir===1){
             return a.amount - b.amount;
-        } else if (SortDir === 2) {
+         }
+         else if(SortDir===2){
             return b.amount - a.amount;
         }
     });
@@ -122,25 +130,50 @@ function sortArrayAmt(SortDir) {
 
 // Currency conversion
 function convertCurrency() {
-    let factor = Math.random() * (1.5 - 0.5) + 0.5; 
-    transactionArray = transactionArray.map(t => {
-        t.amount *= factor;
-        return t;
-    });
+
+    let currencyRate = Math.random()*(1.5 - .5) + 1; 
+    
+    // Just overwrite transactionArray with new map()
+    setTimeout(()=>{
+        transactionArray = transactionArray.map(t => {
+            t.amount *= currencyRate;
+            return t;
+        });
+        
+    },2000);
+
+    
+    retrievingCurrencyMessage(1000,3);//simulate currency rate retrieval
+
     updateArray();
     updateTable();
     updateRunningTotal();
     updateChart(); 
 }
 
+function retrievingCurrencyMessage(delay,limit){
+    let c = 0;
+    let intervalTimer = setInterval(()=>{
+            $('#retrievingCurrency').html('Retrieving Currency')//this keeps refreshing message until clearInterval() called
+            if(c==limit){ 
+                $('#retrievingCurrency').html('Currency Retrieved');
+                clearInterval(intervalTimer);
+            }
+            c++;
+        },
+        delay
+    );
+}
+
 // Chart setup
 let myChart;
 function createChart() {
-    const ctx = document.getElementById('transactionChart').getContext('2d'); //jQuery doesn't work
-    myChart = new Chart(ctx, {
+
+    const ctx = document.getElementById('transactionChart').getContext('2d');
+    myChart = new Chart(ctx, {//need myChart object for updateChart() to use later
         type: 'bar', 
         data: {
-            labels: transactionArray.map(transaction => transaction.category),
+            labels: transactionArray.map(transaction => `${transaction.category}`), // This is barchart, label is text
             datasets: [{
                 label: 'Transaction Amounts',
                 data: transactionArray.map(transaction => transaction.amount), 
@@ -152,55 +185,63 @@ function createChart() {
 
 function updateChart() {
 
-    const labels = transactionArray.map(transaction => transaction.category);
-    const data = transactionArray.map(transaction => transaction.amount);
+    const labels = transactionArray.map((transaction) => `${transaction.category}`);
+    const data = transactionArray.map((transaction) => transaction.amount);
     
     myChart.data.labels = labels;
     myChart.data.datasets[0].data = data;
     myChart.update();
+
 }
 
-function updateCategoryChart() {//Recreate the chart whenever transactionArray updated
+function updateCategoryChart() {
+
+    $('#test_area11').html(transactionArray);
 
     const startDate = new Date($('#startDatePicker').val());
     const endDate = new Date($('#endDatePicker').val());
     
     const totalByCategory = {};
 
-    // Loop through each transaction to aggregate amounts by category within the date range
-    transactionArray.forEach(transaction => {
-        const transactionDate = new Date(transaction.date);//retrieve date of each transaction in transactionArray for comparison next step
+    // Loop through each trnsaction toupdate the relevant category
+    transactionArray.forEach((transaction) => {
 
-        // Check if the transaction date falls within the selected range & record Category & Amount if so
+        const transactionDate = new Date(transaction.date);
+
         if (transactionDate >= startDate && transactionDate <= endDate) {
-            const category = transaction.category;
-            const amount = transaction.amount;
 
-            // Initialize the category in the totalByCategory object if it doesn't exist
+            const category = transaction.category; 
+            const amount = transaction.amount; 
+            
+        //    create category if no transaction of that category logged before
             if (!totalByCategory[category]) {
                 totalByCategory[category] = 0;
             }
-            totalByCategory[category] += amount; // Aggregate the amounts
+            totalByCategory[category] += amount;
         }
     });
 
-    // Prepare the data for the chart
     const categories = Object.keys(totalByCategory);
     const amounts = categories.map(cat => totalByCategory[cat]);
 
-    // Update the category chart
+    // Redraw category chart every update
     const ctx = document.getElementById('categoryChart').getContext('2d');
-    new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: categories,
-            datasets: [{
-                label: 'Total Amount by Category',
-                data: amounts,
-                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                borderColor: 'rgba(75, 192, 192, 1)',
-                borderWidth: 1
-            }]
-        }
-    });
+
+    // Check if the chart already exists
+    if (myCategoryChart) {
+        myCategoryChart.data.labels = categories;
+        myCategoryChart.data.datasets[0].data = amounts;
+        myCategoryChart.update();
+    } else {
+        myCategoryChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: categories,
+                datasets: [{
+                    label: 'Total Amount by Category',
+                    data: amounts
+                }]
+            }
+        });
+    }
 }
