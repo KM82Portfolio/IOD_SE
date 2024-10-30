@@ -10,16 +10,16 @@ const objArray = [{a: 1, b: 2}, {a: 4, b: 5}, {a: 8, b: 9}];
 const result = extractValue(objArray, 'a');
 console.log(result);
 
-function attackInterval(delay,limit){
+function changeCurrency(delay,limit){
 
     let c = 0
 
     let intervalTimer = setInterval(()=>{
-            if(c==0) {console.log('Attack Starts!');}
-            console.log(Math.random());
-            console.log('Attacking again!')
+            if(c==0) {
+                $('#test_area11').html('Extracting Currency;');
+            }
             if(c==limit){ 
-                console.log('Stopping Attack');
+                $('#test_area11').html('');
                 clearInterval(intervalTimer);
             }
             c++;
@@ -27,4 +27,4 @@ function attackInterval(delay,limit){
         delay
     );
 }
-attackInterval(1000,5);
+changeCurrency(200,5);

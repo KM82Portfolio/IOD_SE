@@ -1,12 +1,15 @@
 let transactionArray = [];
 let runningTotal = 0;
 
-$(document).ready(function() {
-    // Clear localStorage and initialize the application
-    localStorage.clear(); 
+$(document).ready(function () {
+    localStorage.clear();
     updateRunningTotalDisplay();
     createChart();
-    createCategoryChart(); 
+    createCategoryChart();
+
+    $('#start-btn').on('click', function () {
+        changeCurrency(500, 5);
+    });
 });
 
 // Change Category options available based on Type selection
@@ -30,7 +33,6 @@ $('#ddlselectType').change(function() {
 // Push everything recorded in form to transactionArray
 $('#btnUpdTbl').click(logTransaction);
 
-// Push Transaction into transactionArray Array
 function logTransaction() {
     
     let date = $('#transactionDatePicker').val();
@@ -50,11 +52,11 @@ function logTransaction() {
         updateArray();
         updateTable();
         updateRunningTotal();
-        updateChart(); // Update chart after adding a transaction
-        $('#transactionAmount').val('');    
-        transactionArrayStringified = JSON.stringify(transactionArray)
-        $('#test_area11').html(transactionArrayStringified); //testing
-        console.log('TEST TEST TEST'); //testing
+        updateChart();
+        updateCatChart();
+
+        $('#transactionAmount').val('');
+        console.log('Transaction recorded:', transaction);
     } 
 }
 
@@ -65,17 +67,17 @@ function updateTable() {
 
     transactionArray.forEach((transaction, index) => {
         let row = `<tr>
-                        <td>${transaction.date}</td>
-                        <td>${transaction.type}</td>
-                        <td>${transaction.category}</td>
-                        <td>${transaction.amount}</td>
-                        <td><button onclick="deleteTransaction(${index})">Delete</button></td>
-                    </tr>`;//dynamically create delete button that calls deleteTransaction(index of row button is on) function
+            <td>${transaction.date}</td>
+            <td>${transaction.type}</td>
+            <td>${transaction.category}</td>
+            <td>${transaction.amount}</td>
+            <td><button onclick="deleteTransaction(${index})">Delete</button></td>
+        </tr>`;
         tbody.append(row);
     });
 }
 
-// Running total
+// Update running total
 function updateRunningTotal() {
     runningTotal = transactionArray.reduce((total, t) => total + t.amount, 0);
     localStorage.setItem("runningTotal", runningTotal);
@@ -125,121 +127,53 @@ function sortArrayAmt(SortDir){
 
 // Currency conversion
 function convertCurrency() {
+    let currencyRate = Math.random() * (1.5 - 0.5) + 1; 
 
-    let currencyRate = Math.random()*(1.5 - .5) + 1; 
-    
-    // Just overwrite transactionArray with new map()
-    setTimeout(()=>{
+    setTimeout(() => {
         transactionArray = transactionArray.map(t => {
             t.amount *= currencyRate;
             return t;
         });
-        
-    },2000);
+    }, 2000);
 
-    
-    retrievingCurrencyMessage(1000,3);//simulate currency rate retrieval
-
+    retrievingCurrencyMessage(1000, 3);
     updateArray();
     updateTable();
     updateRunningTotal();
     updateChart(); 
 }
 
-function retrievingCurrencyMessage(delay,limit){
+function retrievingCurrencyMessage(delay, limit) {
     let c = 0;
-    let intervalTimer = setInterval(()=>{
-            $('#retrievingCurrency').html('Retrieving Currency')//this keeps refreshing message until clearInterval() called
-            if(c==limit){ 
-                $('#retrievingCurrency').html('Currency Retrieved');
-                clearInterval(intervalTimer);
-            }
-            c++;
-        },
-        delay
-    );
+    let intervalTimer = setInterval(() => {
+        $('#retrievingCurrency').html('Retrieving Currency');
+        if (c === limit) { 
+            $('#retrievingCurrency').html('Currency Retrieved');
+            clearInterval(intervalTimer);
+        }
+        c++;
+    }, delay);
 }
 
-// Chart setup
 let myChart;
-function createChart() {
 
+// Chart setup
+function createChart() {
     const ctx = document.getElementById('transactionChart').getContext('2d');
-    myChart = new Chart(ctx, {//need myChart object for updateChart() to use later
+    myChart = new Chart(ctx, {
         type: 'bar', 
         data: {
-            labels: transactionArray.map(transaction => `${transaction.category}`), // This is barchart, label is text
+            labels: [],
             datasets: [{
                 label: 'Transaction Amounts',
-                data: transactionArray.map(transaction => transaction.amount), 
-                borderWidth: 1
+                data: [], 
+                borderWidth: 1,
+                backgroundColor: 'rgba(75, 192, 192, 0.2)', // Chart background color
+                borderColor: 'rgba(75, 192, 192, 1)', // Chart border color
             }]
         }
     });
 }
-
-function updateChart() {
-
-    const labels = transactionArray.map((transaction) => `${transaction.category}`);
-    const data = transactionArray.map((transaction) => transaction.amount);
-    
-    myChart.data.labels = labels;
-    myChart.data.datasets[0].data = data;
-    myChart.update();
-
-}
-
-// function updateCategoryChart() {
-
-//     $('#test_area11').html(transactionArray);
-
-//     const startDate = new Date($('#startDatePicker').val());
-//     const endDate = new Date($('#endDatePicker').val());
-    
-//     const totalByCategory = {};
-
-//     // Loop through each trnsaction toupdate the relevant category
-//     transactionArray.forEach((transaction) => {
-
-//         const transactionDate = new Date(transaction.date);
-
-//         if (transactionDate >= startDate && transactionDate <= endDate) {
-
-//             const category = transaction.category; 
-//             const amount = transaction.amount; 
-            
-//         //    create category if no transaction of that category logged before
-//             if (!totalByCategory[category]) {
-//                 totalByCategory[category] = 0;
-//             }
-//             totalByCategory[category] += amount;
-//         }
-//     });
-
-//     const categories = Object.keys(totalByCategory);
-//     const amounts = categories.map(cat => totalByCategory[cat]);
-
-//     // Redraw category chart every update
-//     const ctx = document.getElementById('categoryChart').getContext('2d');
-
-//     // Check if the chart already exists
-//     if (myCategoryChart) {
-//         myCategoryChart.data.labels = categories;
-//         myCategoryChart.data.datasets[0].data = amounts;
-//         myCategoryChart.update();
-//     } else {
-//         myCategoryChart = new Chart(ctx, {
-//             type: 'bar',
-//             data: {
-//                 labels: categories,
-//                 datasets: [{
-//                     label: 'Total Amount by Category',
-//                     data: amounts
-//                 }]
-//             }
-//         });
-//     }
-// }
 
 function getCatLabels() {
     let labels = [];
@@ -250,6 +184,20 @@ function getCatLabels() {
     });
     return labels;
 }
+
+function getCategoryWiseAmount() {
+    let catAmt = {};
+    transactionArray.forEach(transaction => {
+        if (!catAmt[transaction.category]) { //On 1st run or on not yet encountered category, create new category
+            catAmt[transaction.category] = 0;
+        }
+        catAmt[transaction.category] += transaction.amount;
+    });
+    return Object.values(catAmt); //returns values already in the order of 
+    //return catAmt; //This case in data: forEach() function that returns value in [key,value] of Object.entries(catAmt)
+}
+
+let myCatChart;
 
 // Category Chart setup
 function createCategoryChart() {
@@ -267,9 +215,51 @@ function createCategoryChart() {
     });
 }
 
+// Update transaction chart
+function updateChart() {
+    myChart.data.labels = transactionArray.map(transaction => transaction.category);
+    myChart.data.datasets[0].data = transactionArray.map(transaction => transaction.amount);
+    myChart.update(); 
+}
+
 // Update category chart
 function updateCatChart() {
     myCatChart.data.labels = getCatLabels();
     myCatChart.data.datasets[0].data = getCategoryWiseAmount();
     myCatChart.update(); 
 }
+
+
+
+// function changeCurrency(delay,limit){
+//     let c = 0
+//     let intervalTimer = setInterval(()=>{
+//             if(c==0) {
+//                 $('#test_area11').html('Extracting Currency;');
+//             }
+//             if(c==limit){ 
+//                 $('#test_area11').html('');
+//                 clearInterval(intervalTimer);
+//             }
+//             c++;
+//         }
+//     );
+// }
+
+
+function changeCurrency(delay, limit) {
+    let c = 0;
+    const intervalTimer = setInterval(() => {
+      if (c === 0) {
+        $('#test_area11').html('Extracting Currency');
+      } else if (c < limit) {
+        $('#test_area11').append('.'); // Adds a dot for each interval
+      } else {
+        $('#test_area11').text(runningTotal * 1.5); // Clear message after reaching limit
+        clearInterval(intervalTimer); // Stop the interval
+      }
+      c++;
+    }, delay);
+}
+
+changeCurrency(200,5)

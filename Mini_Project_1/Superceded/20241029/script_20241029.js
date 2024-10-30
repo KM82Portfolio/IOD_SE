@@ -5,8 +5,7 @@ $(document).ready(function() {
     // Clear localStorage and initialize the application
     localStorage.clear(); 
     updateRunningTotalDisplay();
-    createChart();
-    createCategoryChart(); 
+    createChart(); 
 });
 
 // Change Category options available based on Type selection
@@ -65,12 +64,12 @@ function updateTable() {
 
     transactionArray.forEach((transaction, index) => {
         let row = `<tr>
-                        <td>${transaction.date}</td>
-                        <td>${transaction.type}</td>
-                        <td>${transaction.category}</td>
-                        <td>${transaction.amount}</td>
-                        <td><button onclick="deleteTransaction(${index})">Delete</button></td>
-                    </tr>`;//dynamically create delete button that calls deleteTransaction(index of row button is on) function
+            <td>${transaction.date}</td>
+            <td>${transaction.type}</td>
+            <td>${transaction.category}</td>
+            <td>${transaction.amount}</td>
+            <td><button onclick="deleteTransaction(${index})">Delete</button></td>
+        </tr>`;
         tbody.append(row);
     });
 }
@@ -189,87 +188,54 @@ function updateChart() {
 
 }
 
-// function updateCategoryChart() {
+function updateCategoryChart() {
 
-//     $('#test_area11').html(transactionArray);
+    $('#test_area11').html(transactionArray);
 
-//     const startDate = new Date($('#startDatePicker').val());
-//     const endDate = new Date($('#endDatePicker').val());
+    const startDate = new Date($('#startDatePicker').val());
+    const endDate = new Date($('#endDatePicker').val());
     
-//     const totalByCategory = {};
+    const totalByCategory = {};
 
-//     // Loop through each trnsaction toupdate the relevant category
-//     transactionArray.forEach((transaction) => {
+    // Loop through each trnsaction toupdate the relevant category
+    transactionArray.forEach((transaction) => {
 
-//         const transactionDate = new Date(transaction.date);
+        const transactionDate = new Date(transaction.date);
 
-//         if (transactionDate >= startDate && transactionDate <= endDate) {
+        if (transactionDate >= startDate && transactionDate <= endDate) {
 
-//             const category = transaction.category; 
-//             const amount = transaction.amount; 
+            const category = transaction.category; 
+            const amount = transaction.amount; 
             
-//         //    create category if no transaction of that category logged before
-//             if (!totalByCategory[category]) {
-//                 totalByCategory[category] = 0;
-//             }
-//             totalByCategory[category] += amount;
-//         }
-//     });
-
-//     const categories = Object.keys(totalByCategory);
-//     const amounts = categories.map(cat => totalByCategory[cat]);
-
-//     // Redraw category chart every update
-//     const ctx = document.getElementById('categoryChart').getContext('2d');
-
-//     // Check if the chart already exists
-//     if (myCategoryChart) {
-//         myCategoryChart.data.labels = categories;
-//         myCategoryChart.data.datasets[0].data = amounts;
-//         myCategoryChart.update();
-//     } else {
-//         myCategoryChart = new Chart(ctx, {
-//             type: 'bar',
-//             data: {
-//                 labels: categories,
-//                 datasets: [{
-//                     label: 'Total Amount by Category',
-//                     data: amounts
-//                 }]
-//             }
-//         });
-//     }
-// }
-
-function getCatLabels() {
-    let labels = [];
-    transactionArray.forEach(transaction => {
-        if (!labels.includes(transaction.category)) {
-            labels.push(transaction.category);
+        //    create category if no transaction of that category logged before
+            if (!totalByCategory[category]) {
+                totalByCategory[category] = 0;
+            }
+            totalByCategory[category] += amount;
         }
     });
-    return labels;
-}
 
-// Category Chart setup
-function createCategoryChart() {
+    const categories = Object.keys(totalByCategory);
+    const amounts = categories.map(cat => totalByCategory[cat]);
+
+    // Redraw category chart every update
     const ctx = document.getElementById('categoryChart').getContext('2d');
-    myCatChart = new Chart(ctx, {
-        type: 'pie', 
-        data: {
-            labels: getCatLabels(),
-            datasets: [{
-                label: 'Category Wise Amount',
-                data: getCategoryWiseAmount(),
-                backgroundColor: ['red', 'blue', 'green', 'yellow'], 
-            }]
-        }
-    });
-}
 
-// Update category chart
-function updateCatChart() {
-    myCatChart.data.labels = getCatLabels();
-    myCatChart.data.datasets[0].data = getCategoryWiseAmount();
-    myCatChart.update(); 
+    // Check if the chart already exists
+    if (myCategoryChart) {
+        myCategoryChart.data.labels = categories;
+        myCategoryChart.data.datasets[0].data = amounts;
+        myCategoryChart.update();
+    } else {
+        myCategoryChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: categories,
+                datasets: [{
+                    label: 'Total Amount by Category',
+                    data: amounts
+                }]
+            }
+        });
+    }
 }
