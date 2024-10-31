@@ -8,50 +8,43 @@ body {
     max-width:1400px
 }
 
-.form{
-    grid-column:1/2;
-    grid-row:1/2;
-    border-style:solid;
-    border:#007BFF;
+.mainHeader{
+    grid-column:1/6;
+    grid-row:1/1;
+    text-align:center;
+    font-size:24px;
+    font-weight:bold;
 }
 
-.table{
-    grid-column:2/6;
-    grid-row:1/2;
+.transactionDetails{
+    grid-column:1/2;
+    grid-row:2/3;
+    border-width:3px;
+    border:#007;
     border-style:solid;
-    border:#007BFF;
+}
+
+.transactionRecord{
+    grid-column:2/6;
+    grid-row:2/3;
+    border-width:3px;
+    border:#007;
+    border-style:solid;
 }
 
 .barchart{
     grid-column:1/3;
     grid-row:3/4;
+    border-width:3px;
+    border:#007;
     border-style:solid;
-    border:#007BFF;
 }
 
 .piechart{
-    grid-column:4/6;
+    grid-column:3/6;
     grid-row:3/4;
-    border:#007
+    border:#007;
     border-style:solid;
-}
-
-fieldset {
-    margin-bottom: 15px; /* Space below fieldset */
-}
-
-.sidebar {
-    width: 300px; /* Sidebar width */
-    background-color: #007BFF; /* Sidebar background color */
-    color: white; /* Text color */
-    padding: 20px; /* Padding inside the sidebar */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-}
-
-.sidebar h2 {
-    text-align: center; /* Center title */
-    margin-bottom: 15px; /* Space below title */
 }
 
 legend {
@@ -72,7 +65,7 @@ label {
 input[type="date"],
 input[type="number"],
 select {
-    width: 100%; /* Full width for inputs */
+    width: 200px; /* Full width for inputs */
     padding: 8px; /* Padding for inputs */
     border: 1px solid #f9f9f9; /* Light border */
     border-radius: 4px; /* Rounded corners */
@@ -90,41 +83,6 @@ button {
 
 button:hover {
     background-color: #218838; /* Darker shade on hover */
-}
-
-.container {
-    display: flex;
-    max-width: 1200px;
-    width: 100%;
-    margin: 20px auto;
-    border-radius: 8px;
-}
-
-
-.main-content {
-    flex: 1;
-    padding: 20px; /* Main padding */
-    background-color: white;
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
-}
-
-h1 {
-    text-align: center;
-    color: #007BFF;
-    margin-bottom: 20px; /* Space below the main title */
-}
-
-.grid-container {
-    display: flex;
-    flex-direction: column;
-}
-
-.record-section, .chart-section {
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    padding: 20px; /* Increased padding for sections */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 legend {
@@ -146,11 +104,11 @@ legend {
 table {
     width: 100%;
     border-collapse: collapse;
-    margin: 20px 0; /* Space around table */
+    margin: 2px 0; /* Space around table */
 }
 
 th, td {
-    padding: 12px; /* Increased cell padding */
+    padding: 5px; /* Increased cell padding */
     text-align: left;
     border-bottom: 1px solid #ddd;
 }

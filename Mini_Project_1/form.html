@@ -4,16 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./css/styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="./script.js" defer></script>
+    <script src="./js/script.js" defer></script>
     <title>Transaction Dashboard</title>
 </head>
 
 <body>
+
+    <header class="mainHeader">
+        <h4>Personal Finance Tracker</h4>
+    </header>
     
-    <fieldset id="transactionDetails" class="form">
+    <fieldset class="transactionDetails" class="form">
         <legend>Transaction Details</legend>
         <label for="transactionDatePicker">Select Transaction Date</label>
         <input type="date" id="transactionDatePicker" onchange="logDate()" required />
@@ -40,7 +44,7 @@
         <button id="btnUpdTbl">Add Transaction</button>
     </fieldset>
 
-    <fieldset id="transactionRecord" class="table">
+    <fieldset class="transactionRecord" class="table">
         <legend>Transaction Record</legend>
         <div class="button-group">
             <button id="sortDateAscending" onclick="sortArrayDate(1)">Sort Date Ascending</button>
@@ -69,12 +73,12 @@
     </fieldset>
 
     <fieldset class="barchart" >
-        <legend>Charts</legend>
+        <legend>Transactions</legend>
         <canvas id="transactionChart"></canvas>
     </fieldset>            
     
     <fieldset class="piechart">
-        <legend>Charts</legend>
+        <legend>Categorized Transactions</legend>
         <canvas id="categoryChart"></canvas>
     </fieldset>            
     
