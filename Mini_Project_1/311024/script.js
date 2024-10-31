@@ -229,24 +229,6 @@ function updateCatChart() {
     myCatChart.update(); 
 }
 
-
-
-// function changeCurrency(delay,limit){
-//     let c = 0
-//     let intervalTimer = setInterval(()=>{
-//             if(c==0) {
-//                 $('#test_area11').html('Extracting Currency;');
-//             }
-//             if(c==limit){ 
-//                 $('#test_area11').html('');
-//                 clearInterval(intervalTimer);
-//             }
-//             c++;
-//         }
-//     );
-// }
-
-
 function changeCurrency(delay, limit) {
     let c = 0;
     const intervalTimer = setInterval(() => {
