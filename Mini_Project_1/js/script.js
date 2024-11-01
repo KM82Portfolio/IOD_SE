@@ -213,16 +213,11 @@ function updateCatChart() {
     myCatChart.update(); 
 }
 
-// Currency conversion
 function convertCurrency() {
-    let currencyRate = Math.random() * (1.5 - 0.5) + 1; 
-    setTimeout(() => {
-        transactionArray = transactionArray.map((t) => {
-            t.amount *= currencyRate;
-            // return t;
-        });
-    }, 2000);
-    return transactionArray;
+    let currencyRate = Math.random() * (1.5 - 0.5) + 1;
+    transactionArray.forEach((transaction) => {
+        transaction.amount *= currencyRate;
+    });
 }
 
 function changeCurrencySimulation(delay, limit) {
@@ -236,13 +231,11 @@ function changeCurrencySimulation(delay, limit) {
         $('#test_area11').append('.'); // Adds a dot for each interval
       } else {
         $('#test_area11').text(runningTotal * 1.5); // Clear message after reaching limit
+        convertCurrency(); //Update amounts in table, running total by performing currency conversion after limit reached
         clearInterval(intervalTimer); // Stop the interval
       }
       c++;
     }, delay);
-
-    // After simulated display delay completed, actually update transactionArray amount values
-    convertCurrency();
 
     // Update everything that uses transactionArray amount
     updateArray();
