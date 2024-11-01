@@ -8,7 +8,7 @@ $(document).ready(function () {
     createCategoryChart();
 
     $('#start-btn').on('click', function () {
-        changeCurrency(500, 5);
+        changeCurrencySimulation(500, 5);
     });
 });
 
@@ -125,35 +125,19 @@ function sortArrayAmt(SortDir){
     updateTable();
 }
 
-// Currency conversion
-function convertCurrency() {
-    let currencyRate = Math.random() * (1.5 - 0.5) + 1; 
 
-    setTimeout(() => {
-        transactionArray = transactionArray.map(t => {
-            t.amount *= currencyRate;
-            return t;
-        });
-    }, 2000);
 
-    retrievingCurrencyMessage(1000, 3);
-    updateArray();
-    updateTable();
-    updateRunningTotal();
-    updateChart(); 
-}
-
-function retrievingCurrencyMessage(delay, limit) {
-    let c = 0;
-    let intervalTimer = setInterval(() => {
-        $('#retrievingCurrency').html('Retrieving Currency');
-        if (c === limit) { 
-            $('#retrievingCurrency').html('Currency Retrieved');
-            clearInterval(intervalTimer);
-        }
-        c++;
-    }, delay);
-}
+// function retrievingCurrencyMessage(delay, limit) {
+//     let c = 0;
+//     let intervalTimer = setInterval(() => {
+//         $('#retrievingCurrency').html('Retrieving Currency');
+//         if (c === limit) { 
+//             $('#retrievingCurrency').html('Currency Retrieved');
+//             clearInterval(intervalTimer);
+//         }
+//         c++;
+//     }, delay);
+// }
 
 let myChart;
 
@@ -229,7 +213,21 @@ function updateCatChart() {
     myCatChart.update(); 
 }
 
-function changeCurrency(delay, limit) {
+// Currency conversion
+function convertCurrency() {
+    let currencyRate = Math.random() * (1.5 - 0.5) + 1; 
+    setTimeout(() => {
+        transactionArray = transactionArray.map((t) => {
+            t.amount *= currencyRate;
+            // return t;
+        });
+    }, 2000);
+    return transactionArray;
+}
+
+function changeCurrencySimulation(delay, limit) {
+
+    // Simulate fetching currency delay, display only
     let c = 0;
     const intervalTimer = setInterval(() => {
       if (c === 0) {
@@ -242,6 +240,15 @@ function changeCurrency(delay, limit) {
       }
       c++;
     }, delay);
+
+    // After simulated display delay completed, actually update transactionArray amount values
+    convertCurrency();
+
+    // Update everything that uses transactionArray amount
+    updateArray();
+    updateTable();
+    updateRunningTotal();
+    updateChart();
 }
 
-changeCurrency(200,5)
+// changeCurrency(200,5)
