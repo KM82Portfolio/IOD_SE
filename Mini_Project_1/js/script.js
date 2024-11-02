@@ -12,6 +12,48 @@ $(document).ready(function () {
     });
 });
 
+// UTILITY FUNCTIONS CALLED BY ACTUAL FUNCTIONS WHICH UPDATE HTML LATER
+// ====================================================================
+// Update the transaction table
+function updateTable() {
+    let tbody = $('#transactionTable tbody');
+    tbody.empty(); 
+
+    transactionArray.forEach((transaction, index) => {
+        let row = `<tr>
+            <td>${transaction.date}</td>
+            <td>${transaction.type}</td>
+            <td>${transaction.category}</td>
+            <td>${transaction.amount}</td>
+            <td><button onclick="deleteTransaction(${index})">Delete</button></td>
+        </tr>`;
+        tbody.append(row);
+    });
+}
+
+// Update running total
+function updateRunningTotal() {
+    runningTotal = transactionArray.reduce((total, t) => total + t.amount, 0);
+    localStorage.setItem("runningTotal", runningTotal);
+    updateRunningTotalDisplay();
+}
+
+// Display running total
+function updateRunningTotalDisplay() {
+    $('#runningTotal').text(runningTotal);
+}
+
+// Delete transaction
+function deleteTransaction(index) {
+    transactionArray.splice(index, 1);
+    updateTable();
+    updateRunningTotal();
+    updateChart(); 
+}
+
+// HTML UPDATE FUNCTIONS
+// =====================
+
 // Change Category options available based on Type selection
 $('#ddlselectType').change(function() {
     // Update category dropdown based on selection
@@ -49,64 +91,14 @@ function logTransaction() {
         };
 
         transactionArray.push(transaction);
-        updateArray();
         updateTable();
         updateRunningTotal();
         updateChart();
         updateCatChart();
 
-        $('#transactionAmount').val('');
+        $('#transactionAmount').val(''); //reset transactionAmount input box to ready for next transaction
         console.log('Transaction recorded:', transaction);
     } 
-}
-
-// Update the transaction table
-function updateTable() {
-    let tbody = $('#transactionTable tbody');
-    tbody.empty(); 
-
-    transactionArray.forEach((transaction, index) => {
-        let row = `<tr>
-            <td>${transaction.date}</td>
-            <td>${transaction.type}</td>
-            <td>${transaction.category}</td>
-            <td>${transaction.amount}</td>
-            <td><button onclick="deleteTransaction(${index})">Delete</button></td>
-        </tr>`;
-        tbody.append(row);
-    });
-}
-
-// Update running total
-function updateRunningTotal() {
-    runningTotal = transactionArray.reduce((total, t) => total + t.amount, 0);
-    localStorage.setItem("runningTotal", runningTotal);
-    updateRunningTotalDisplay();
-}
-
-// Display running total
-function updateRunningTotalDisplay() {
-    $('#runningTotal').text(runningTotal);
-}
-
-// Delete transaction
-function deleteTransaction(index) {
-    transactionArray.splice(index, 1);
-    updateArray();
-    updateTable();
-    updateRunningTotal();
-    updateChart(); 
-}
-
-// Update the transaction array in localStorage as JSON
-function updateJSON() {
-    const jsonString = JSON.stringify(transactionArray);
-    localStorage.setItem('transactions', jsonString); 
-}
-
-// Update the transaction array and refresh the UI
-function updateArray() {
-    updateJSON(); 
 }
 
 function sortArrayDate(SortDir){
@@ -124,20 +116,6 @@ function sortArrayAmt(SortDir){
     });
     updateTable();
 }
-
-
-
-// function retrievingCurrencyMessage(delay, limit) {
-//     let c = 0;
-//     let intervalTimer = setInterval(() => {
-//         $('#retrievingCurrency').html('Retrieving Currency');
-//         if (c === limit) { 
-//             $('#retrievingCurrency').html('Currency Retrieved');
-//             clearInterval(intervalTimer);
-//         }
-//         c++;
-//     }, delay);
-// }
 
 let myChart;
 
@@ -181,7 +159,7 @@ function getCategoryWiseAmount() {
     //return catAmt; //This case in data: forEach() function that returns value in [key,value] of Object.entries(catAmt)
 }
 
-let myCatChart;
+let myCatChart;//must be specified outside function because myCatChart will be used by multiple functions
 
 // Category Chart setup
 function createCategoryChart() {
@@ -193,7 +171,7 @@ function createCategoryChart() {
             datasets: [{
                 label: 'Category Wise Amount',
                 data: getCategoryWiseAmount(),
-                backgroundColor: ['red', 'blue', 'green', 'yellow'], 
+                backgroundColor: ['blue', 'red', 'green', 'yellow'], 
             }]
         }
     });
@@ -201,8 +179,8 @@ function createCategoryChart() {
 
 // Update transaction chart
 function updateChart() {
-    myChart.data.labels = transactionArray.map(transaction => transaction.category);
-    myChart.data.datasets[0].data = transactionArray.map(transaction => transaction.amount);
+    myChart.data.labels = transactionArray.map((transaction) => transaction.category);
+    myChart.data.datasets[0].data = transactionArray.map((transaction) => transaction.amount);
     myChart.update(); 
 }
 
@@ -220,6 +198,14 @@ function convertCurrency() {
     });
 }
 
+// function convertCurrency() {
+//     let currencyRate = Math.random() * (1.5 - 0.5) + 1;
+//     transactionArray = transactionArray.map((t) => {
+//         t.amount *= currencyRate;
+//         return t;
+//     });
+// }
+
 function changeCurrencySimulation(delay, limit) {
 
     // Simulate fetching currency delay, display only
@@ -232,16 +218,39 @@ function changeCurrencySimulation(delay, limit) {
       } else {
         $('#test_area11').text(runningTotal * 1.5); // Clear message after reaching limit
         convertCurrency(); //Update amounts in table, running total by performing currency conversion after limit reached
+        updateTable();//why does 1st run of updateTable() not reflect convertCurrency() above?
+        updateRunningTotal();
+        updateChart();
         clearInterval(intervalTimer); // Stop the interval
       }
       c++;
     }, delay);
 
-    // Update everything that uses transactionArray amount
-    updateArray();
-    updateTable();
-    updateRunningTotal();
-    updateChart();
+   
 }
 
-// changeCurrency(200,5)
+// UNUSED FUNCTIONS
+// ================
+
+// // Update the transaction array in localStorage as JSON
+// function updateJSON() {
+//     const jsonString = JSON.stringify(transactionArray);
+//     localStorage.setItem('transactions', jsonString); 
+// }
+
+// // Update the transaction array and refresh the UI
+// function updateTable() {
+//     updateJSON(); 
+// }
+
+// function retrievingCurrencyMessage(delay, limit) {
+//     let c = 0;
+//     let intervalTimer = setInterval(() => {
+//         $('#retrievingCurrency').html('Retrieving Currency');
+//         if (c === limit) { 
+//             $('#retrievingCurrency').html('Currency Retrieved');
+//             clearInterval(intervalTimer);
+//         }
+//         c++;
+//     }, delay);
+// }
