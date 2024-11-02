@@ -117,7 +117,7 @@ function sortArrayAmt(SortDir){
     updateTable();
 }
 
-let myChart;
+let myChart;//must be specified outside function because myCatChart will be used by multiple functions
 
 // Chart setup
 function createChart() {
@@ -198,14 +198,6 @@ function convertCurrency() {
     });
 }
 
-// function convertCurrency() {
-//     let currencyRate = Math.random() * (1.5 - 0.5) + 1;
-//     transactionArray = transactionArray.map((t) => {
-//         t.amount *= currencyRate;
-//         return t;
-//     });
-// }
-
 function changeCurrencySimulation(delay, limit) {
 
     // Simulate fetching currency delay, display only
@@ -226,31 +218,4 @@ function changeCurrencySimulation(delay, limit) {
       c++;
     }, delay);
 
-   
 }
-
-// UNUSED FUNCTIONS
-// ================
-
-// // Update the transaction array in localStorage as JSON
-// function updateJSON() {
-//     const jsonString = JSON.stringify(transactionArray);
-//     localStorage.setItem('transactions', jsonString); 
-// }
-
-// // Update the transaction array and refresh the UI
-// function updateTable() {
-//     updateJSON(); 
-// }
-
-// function retrievingCurrencyMessage(delay, limit) {
-//     let c = 0;
-//     let intervalTimer = setInterval(() => {
-//         $('#retrievingCurrency').html('Retrieving Currency');
-//         if (c === limit) { 
-//             $('#retrievingCurrency').html('Currency Retrieved');
-//             clearInterval(intervalTimer);
-//         }
-//         c++;
-//     }, delay);
-// }
