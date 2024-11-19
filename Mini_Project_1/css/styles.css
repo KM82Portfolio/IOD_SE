@@ -1,0 +1,160 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    max-width:1400px
+}
+
+.mainHeader{
+    grid-column:1/6;
+    grid-row:1/1;
+    text-align:center;
+    font-size:24px;
+    font-weight:bold;
+}
+
+.transactionDetails{
+    grid-column:1/2;
+    grid-row:2/3;
+    border-width:3px;
+    border:#007;
+    border-style:solid;
+}
+
+.transactionRecord{
+    grid-column:2/6;
+    grid-row:2/3;
+    border-width:3px;
+    border:#007;
+    border-style:solid;
+}
+
+.barchart{
+    grid-column:1/3;
+    grid-row:3/4;
+    border-width:3px;
+    border:#007;
+    border-style:solid;
+}
+
+.piechart{
+    grid-column:3/6;
+    grid-row:3/4;
+    border:#007;
+    border-style:solid;
+}
+
+legend {
+    font-weight: bold; /* Bold legend text */
+    color: #f9f9f9; /* Light color for legend */
+}
+
+.form-group {
+    margin-bottom: 15px; /* Space between inputs */
+}
+
+label {
+    display: block; /* Block display for labels */
+    margin-bottom: 5px; /* Space below labels */
+    color: #f9f9f9; /* Light color for labels */
+}
+
+input[type="date"],
+input[type="number"],
+select {
+    width: 200px; /* Full width for inputs */
+    padding: 8px; /* Padding for inputs */
+    border: 1px solid #f9f9f9; /* Light border */
+    border-radius: 4px; /* Rounded corners */
+}
+
+button {
+    width: 100%; /* Full width button */
+    padding: 10px; /* Padding for button */
+    background-color: #28a745; /* Button color */
+    color: white; /* Button text color */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer on hover */
+}
+
+button:hover {
+    background-color: #218838; /* Darker shade on hover */
+}
+
+legend {
+    font-weight: bold;
+    color: #007BFF;
+    padding-bottom: 10px; /* Space below legend */
+}
+
+.ddlClass {
+    margin-right: 10px;
+}
+
+.table-responsive {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 10px; /* Space above the table */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2px 0; /* Space around table */
+}
+
+th, td {
+    padding: 5px; /* Increased cell padding */
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #007BFF;
+    color: white;
+}
+
+button {
+    padding: 10px 15px; /* Increased button padding */
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px; /* Space below button group */
+}
+
+#runningTotalDiv {
+    font-weight: bold;
+    color: #28a745;
+    margin-top: 10px; /* Space above total */
+}
+
+.chart-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+   
+}
+
+canvas {
+    max-width: 100%;
+    border-radius: 8px;
+    background-color: white;
+    margin-top: 10px; /* Space above charts */
+}

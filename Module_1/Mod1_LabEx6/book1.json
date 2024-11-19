@@ -1,0 +1,18 @@
+{
+    "book":{
+                "title":"Bad jokes",
+                "description":"Book of really bad jokes",
+                "author":"Who else?",
+                "totalpages":1,
+                "Chapters":["Intro","Act 1","Act 2","Act 3"]
+            }
+    ,
+    "book1":{
+                "title":"Title2",
+                "description":"Description2",
+                "author":"Who else?",
+                "totalpages":1,
+                "Chapters":["Intro","Act 1","Act 2","Act 3"]
+            }
+    
+}

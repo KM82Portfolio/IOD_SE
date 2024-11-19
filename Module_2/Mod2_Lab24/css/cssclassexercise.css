@@ -1,0 +1,16 @@
+.color-red {
+    color:red;
+}
+
+input[type="text"]{
+    width:100%;
+}
+
+a[title="google"]{
+    color:darkblue;
+    font-weight:bold;
+    font-size:larger;
+}
+#only-p{
+
+}
