@@ -56,6 +56,19 @@
         <!-- <div id='car-list' class="row"> -->
 
         </div>
+
+        <div class="user-entry" style="display:grid;max-width:333px">
+            <div class="title-entry-div" style="display:grid;grid-template-rows:1/1;">
+                <label for="title-textbox">Enter Article Title</label>
+                <input type="text" id="title-textbox"/>
+            </div>
+            <div class="content-entry-div" style="display:grid;grid-template-rows:2/2;">
+                <label for="content-textbox">Enter Article Content</label>
+                <input type="text" id="content-textbox"/>
+            </div>
+            <button onclick="addNewArticle()" style="display:grid;grid-template-rows:3/3;">Add News Article</button>
+        </div>
+
     </main>
 
     <script src="./script/script.js"></script>

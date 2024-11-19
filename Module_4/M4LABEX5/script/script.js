@@ -14,6 +14,26 @@ function addNews(news){
     document.querySelector('#news-list').appendChild(newsTemplate);
 }
 
-news.forEach((ns)=>{
+function addNewArticle(){
+  
+  let newArticleTitle = document.querySelector('#title-textbox');
+  let newArticleContent = document.querySelector('#content-textbox');
+
+  news.push({id:news.length+1,title:newArticleTitle.value,content:newArticleContent.value,});
+
+  populateNews();
+
+}
+
+function populateNews(){
+  
+  let newsContainer = document.querySelector('#news-list');
+  newsContainer.innerHTML='';
+
+  news.forEach((ns)=>{
     addNews(ns);
-})
+  })
+
+}
+
+populateNews();
