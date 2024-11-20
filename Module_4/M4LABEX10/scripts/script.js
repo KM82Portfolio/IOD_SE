@@ -38,6 +38,7 @@ async function fetchProducts() {
 
     const filteredProducts = filterByCategories(products,"electronics");
     console.log('Filtered Products ',filteredProducts);
+    populateProductContainer(filteredProducts); //testing, put in wrapper function that takes user selection as input
 
     return products;
 }
