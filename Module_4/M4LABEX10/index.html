@@ -2,7 +2,7 @@
 <html lang="en">
 
     <template id="card-template">
-        <div class="card col-8 p-2" style="width: 18rem; margin:10px;max-width:333px;max-height:333px;overflow:scroll;">
+        <div class="card col-8 p-2">
             <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
@@ -27,6 +27,7 @@
             integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
             crossorigin="anonymous"
         />
+        <link rel="stylesheet" href="./styles/style.css"/>
     </head>
 
     <body>
@@ -58,8 +59,31 @@
                                 >
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="./about.html">about</a>
+                                <a class="nav-link" href="./about.html">About</a>
                             </li>
+                            <li class="nav-item dropdown">
+                                <a
+                                    class="nav-link dropdown-toggle"
+                                    href="#"
+                                    id="dropdownId"
+                                    data-bs-toggle="dropdown"
+                                    aria-haspopup="true"
+                                    aria-expanded="false"
+                                    >Categories</a
+                                >
+                                <div
+                                    class="dropdown-menu"
+                                    aria-labelledby="dropdownId"
+                                >
+                                    <a class="dropdown-item" href="#"
+                                        >Electronics</a
+                                    >
+                                    <a class="dropdown-item" href="#"
+                                        >Men's Clothing</a
+                                    >
+                                </div>
+                            </li>
+                            
                             
                         </ul>
                         <form class="d-flex my-2 my-lg-0">

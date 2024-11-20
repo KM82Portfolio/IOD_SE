@@ -1,0 +1,11 @@
+#product-container{
+    flex-wrap: wrap;
+}
+
+.card{
+    width: 18rem; 
+    margin:10px;
+    max-width:333px;
+    max-height:333px;
+    overflow:scroll;
+}
