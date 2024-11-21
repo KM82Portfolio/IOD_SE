@@ -1,67 +1,50 @@
 <!doctype html>
 <html lang="en">
 
-    <template id="card-template">
-        <div class="card col-8 p-2">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                    content.</p>
-            </div>
+<template id="card-template">
+    <div class="card col-8 p-2">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
         </div>
-    </template>
+    </div>
+</template>
 
-    <head>
-        <title>Fake Store</title>
-        <!-- Required meta tags -->
-        <meta charset="utf-8" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
-        />
+<head>
+    <title>Fake Store</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-        <!-- Bootstrap CSS v5.2.1 -->
-        <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-            crossorigin="anonymous"
-        />
-        <link rel="stylesheet" href="./styles/style.css"/>
-    </head>
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <link rel="stylesheet" href="./styles/style.css" />
+</head>
 
-    <body>
+<body>
 
-        <header>
-            <!-- place navbar here -->
-             <nav
-                class="navbar navbar-expand-sm navbar-dark bg-dark"
-             >
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="./index.html">Fake Store</a>
-                    <button
-                        class="navbar-toggler d-lg-none"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#collapsibleNavId"
-                        aria-controls="collapsibleNavId"
-                        aria-expanded="false"
-                        aria-label="Toggle navigation"
-                    >
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="collapsibleNavId">
-                        <ul class="navbar-nav me-auto mt-2 mt-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link active" href="./index.html" aria-current="page"
-                                    >Home
-                                    <span class="visually-hidden">(current)</span></a
-                                >
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./about.html">About</a>
-                            </li>
-                            <!-- <li class="nav-item dropdown">
+    <header>
+        <!-- place navbar here -->
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="./index.html">Fake Store</a>
+                <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="collapsibleNavId">
+                    <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="./index.html" aria-current="page">Home
+                                <span class="visually-hidden">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./about.html">About</a>
+                        </li>
+                        <!-- <li class="nav-item dropdown">
                                 <a
                                     class="nav-link dropdown-toggle"
                                     href="#"
@@ -81,79 +64,73 @@
                                     <a class="dropdown-item" href="#" id="Men_Clothing_DDLI" id="Men_Clothing_DDLI"
                                         >Men's Clothing</a
                                     > -->
-                                    <div class="dropdown-item" id="Electronics_DDLI" value="Electronics_DDLI"
+                        <!-- <div class="dropdown-item" id="Electronics_DDLI" value="Electronics_DDLI"
                                         >Electronics</div
                                     >
                                     <div class="dropdown-item" id="Men_Clothing_DDLI" value="Men_Clothing_DDLI"
                                         >Men's Clothing</div
-                                    >
-                                </div>
-                            </li> -->
-                            <li class="dropdown open">
-                                <button
-                                    class="btn btn-secondary dropdown-toggle"
-                                    type="button"
-                                    id="triggerId"
-                                    data-bs-toggle="dropdown"
-                                    aria-haspopup="true"
-                                    aria-expanded="false"
-                                >
-                                    Categories
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="triggerId">
-                                    <button class="dropdown-item" id="Electronics_DDLI" value="electronics" href="#">Electronics</button>
-                                    <button class="dropdown-item" id="Men_Clothing_DDLI" value="men's clothing" href="#">Men's Clothing</button>
-                                </div>
-                            </li>
-                            
-                            
-                            
-                        </ul>
-                        <form class="d-flex my-2 my-lg-0">
-                            <input
-                                class="form-control me-sm-2"
-                                type="text"
-                                placeholder="Search"
-                            />
-                            <button
-                                class="btn btn-outline-success my-2 my-sm-0"
-                                type="submit"
-                            >
-                                Search
-                            </button>
-                        </form>
-                    </div>
+                                    > -->
                 </div>
-             </nav>
-             
-        </header>
-        
-        <!-- <main class="container-fluid" id="product-container"> -->
-        <main class="d-flex flex-row" id="product-container" style="flex-wrap: wrap;">
-            <div class="d-flex flex-row">
-            <!-- <div class="results" style="display:flexbox;flex-direction:row;min-width:1200px;"> -->
-                
+                </li> -->
+                <li class="dropdown open">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="triggerId"
+                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Categories
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="triggerId">
+                        <!-- <button class="dropdown-item" id="Electronics_DDLI" >Electronics</button>
+                                    <button class="dropdown-item" id="Men_Clothing_DDLI" >Men's Clothing</button> -->
+                    </div>
+                </li>
+
+
+
+                </ul>
+                <form class="d-flex my-2 my-lg-0">
+                    <input class="form-control me-sm-2" type="text" placeholder="Search" />
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                        Search
+                    </button>
+                </form>
             </div>
-            
-        </main>
+            </div>
+        </nav>
 
-        <footer>
-            <!-- place footer here -->
-        </footer>
+    </header>
 
-        <!-- Bootstrap JavaScript Libraries -->
-        <script
-            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-            crossorigin="anonymous"
-        ></script>
 
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-            integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
-            crossorigin="anonymous"
-        ></script>
+        <div class="container-fluid">
+            <div class="row"> <!-- Sidebar -->
+                <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse">
+                    <div class="position-sticky">
+                       <div class="cat-container">
+                            <button id="all-filter">All Products</button>
+                       </div>
+                    </div>
+                </nav> <!-- Main Content -->
+                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 d-flex" id="product-container">
+                    <h1>Welcome to the Dashboard</h1>
+                    <p>This is the main content area.</p>
+                </main>
+            </div>
+        </div>
 
-        <script src="./scripts/script.js"></script>
-    </body>
+  
+
+    <footer>
+        <!-- place footer here -->
+    </footer>
+
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+
+    <script src="./scripts/script.js"></script>
+</body>
+
 </html>
