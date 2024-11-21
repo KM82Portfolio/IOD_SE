@@ -61,7 +61,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="./about.html">About</a>
                             </li>
-                            <li class="nav-item dropdown">
+                            <!-- <li class="nav-item dropdown">
                                 <a
                                     class="nav-link dropdown-toggle"
                                     href="#"
@@ -75,14 +75,37 @@
                                     class="dropdown-menu"
                                     aria-labelledby="dropdownId"
                                 >
-                                    <a class="dropdown-item" href="#"
+                                    <!-- <a class="dropdown-item" href="#" id="Electronics_DDLI" value="Electronics_DDLI"
                                         >Electronics</a
                                     >
-                                    <a class="dropdown-item" href="#"
+                                    <a class="dropdown-item" href="#" id="Men_Clothing_DDLI" id="Men_Clothing_DDLI"
                                         >Men's Clothing</a
+                                    > -->
+                                    <div class="dropdown-item" id="Electronics_DDLI" value="Electronics_DDLI"
+                                        >Electronics</div
+                                    >
+                                    <div class="dropdown-item" id="Men_Clothing_DDLI" value="Men_Clothing_DDLI"
+                                        >Men's Clothing</div
                                     >
                                 </div>
+                            </li> -->
+                            <li class="dropdown open">
+                                <button
+                                    class="btn btn-secondary dropdown-toggle"
+                                    type="button"
+                                    id="triggerId"
+                                    data-bs-toggle="dropdown"
+                                    aria-haspopup="true"
+                                    aria-expanded="false"
+                                >
+                                    Categories
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="triggerId">
+                                    <button class="dropdown-item" id="Electronics_DDLI" value="electronics" href="#">Electronics</button>
+                                    <button class="dropdown-item" id="Men_Clothing_DDLI" value="men's clothing" href="#">Men's Clothing</button>
+                                </div>
                             </li>
+                            
                             
                             
                         </ul>

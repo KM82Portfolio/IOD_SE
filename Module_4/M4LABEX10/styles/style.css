@@ -9,3 +9,7 @@
     max-height:333px;
     overflow:scroll;
 }
+
+.dropdown {
+    flex-direction: row;
+}

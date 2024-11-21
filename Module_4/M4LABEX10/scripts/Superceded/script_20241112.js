@@ -1,4 +1,3 @@
-// Convert this to map() but need to know how to iterate through dropdown-menu <div> <a> children
 function createProductCard(pdt){
     const pdtTemplate = document.querySelector('#card-template').content.cloneNode(true);
     pdtTemplate.querySelector('.card-title').innerText = pdt.category;
@@ -24,46 +23,38 @@ function filterByCategories(productsArray,categoryToFilter){
 
 }
 
-let filteredProducts='';
-
 async function fetchProducts() {
 
     const pdtResponse = await fetch("https://fakestoreapi.com/products");
+    // console.log('1 ',response);
     const products = await pdtResponse.json();
+    // console.log('2 ',products);
     populateProductContainer(products);
 
-    return products;//for testing accessing products outside of this async function
-}
-
-// main() style async function that allows for eventListeners
-(async ()=> {
-
-    let pdts = await fetchProducts();
-    console.log('Sven',pdts);
+    const catResponse = await fetch('https://fakestoreapi.com/products/categories')
+    const categories = await catResponse.json();
+    console.log('Cat ',categories) //test
     
-    let Electronics_DDLI_Sel = document.querySelector('#Electronics_DDLI');
-    Electronics_DDLI_Sel.addEventListener('click',(e)=>{
-        console.log(e.target.innerText);
-        filteredProducts = filterByCategories(pdts,e.target.innerText);
-        console.log('Electronics_DDLI_Sel Triggered');
-    });
-
-    let Men_Clothing_DDLI_Sel = document.querySelector('#Men_Clothing_DDLI');
-    Men_Clothing_DDLI_Sel.addEventListener('click',(e)=>{
-        console.log(e.target.innerText);
-        filteredProducts = filterByCategories(pdts,e.target.innerText);
-        console.log('Men_Clothing_DDLI_Sel Triggered');
-
-    });
-
-    filteredProducts = filterByCategories(pdts,"electronics");
+    let filteredProducts='';
+    filteredProducts = filterByCategories(products,"electronics");
     console.log('Filtered Products ',filteredProducts);
     
     // display filtered products if user selects to filter, else display all products
-    filteredProducts!='' ? populateProductContainer(filteredProducts) : populateProductContainer(pdts);
+    filteredProducts!='' ? populateProductContainer(filteredProducts): populateProductContainer(products);
 
+    return products;
+}
+
+fetchProducts();
+
+
+// Test accessing return from async function
+(async ()=> {
+    console.log('NS');
+    console.log('PA ',await fetchProducts())
 })(); 
-// let productContainer = document.querySelector('#product-container')
+let productContainer = document.querySelector('#product-container')
+
 // function getCategorySelection(){
 
 //   for(let a of document.querySelectorAll('.dropdown-menu')){
