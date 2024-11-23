@@ -65,7 +65,7 @@ async function main(){
             populateProductContainer(filteredPDT);
         })
         catDDMContainer.appendChild(catBtn);
-      })
+    })
     
     // display filtered products if user selects to filter, else display all products
     filteredProducts!='' ? populateProductContainer(filteredProducts) : populateProductContainer(pdts);
