@@ -42,7 +42,17 @@
                 
                 // fill in chart options required
                 options.xAxis.data = uniqueCat;
-                options.series.data = json.price;
+
+                let priceByCat = [];
+                uniqueCat.forEach((cat)=>{
+                    let currCatSum = 0;
+                    json.forEach((pdt)=>{
+                        if(pdt.category===cat){currCatSum+=pdt.price;}
+                    })
+                    priceByCat.push(currCatSum)
+                })
+                console.log('sumByCat ',priceByCat)
+                options.series[0].data = priceByCat; //series[0] needed as series is actually an array where each series is an object{}
             })
             .then(() => {
                 // Display the chart
