@@ -5,11 +5,31 @@
 .card{
     width: 18rem; 
     margin:10px;
-    max-width:333px;
-    max-height:333px;
+    min-width:333px;
+    min-height:333px;
     overflow:scroll;
 }
 
 .dropdown {
     flex-direction: row;
+}
+
+.card-title{
+
+}
+.card-text{
+    font-size:medium;
+}
+.card-img{
+    max-width:200px;
+    max-height:200px;
+}
+.card-category{
+    font-size:small;
+
+}
+
+.buy-button{
+    min-width:100px;
+    min-height:50px;
 }

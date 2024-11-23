@@ -4,9 +4,13 @@
 <template id="card-template">
     <div class="card col-8 p-2">
         <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
+            <h5 class="card-title"></h5>
+            <p class="card-text"></p>
+            <img class="card-img"/>
+            <div class="button-holder">
+                <button class="buy-button">Buy</button>
+            </div>
+            <p class="card-category"></p>
         </div>
     </div>
 </template>
@@ -44,48 +48,19 @@
                         <li class="nav-item">
                             <a class="nav-link" href="./about.html">About</a>
                         </li>
-                        <!-- <li class="nav-item dropdown">
-                                <a
-                                    class="nav-link dropdown-toggle"
-                                    href="#"
-                                    id="dropdownId"
-                                    data-bs-toggle="dropdown"
-                                    aria-haspopup="true"
-                                    aria-expanded="false"
-                                    >Categories</a
-                                >
-                                <div
-                                    class="dropdown-menu"
-                                    aria-labelledby="dropdownId"
-                                >
-                                    <!-- <a class="dropdown-item" href="#" id="Electronics_DDLI" value="Electronics_DDLI"
-                                        >Electronics</a
-                                    >
-                                    <a class="dropdown-item" href="#" id="Men_Clothing_DDLI" id="Men_Clothing_DDLI"
-                                        >Men's Clothing</a
-                                    > -->
-                        <!-- <div class="dropdown-item" id="Electronics_DDLI" value="Electronics_DDLI"
-                                        >Electronics</div
-                                    >
-                                    <div class="dropdown-item" id="Men_Clothing_DDLI" value="Men_Clothing_DDLI"
-                                        >Men's Clothing</div
-                                    > -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="./cart.html">Cart</a>
+                        </li>
+                        <li class="dropdown open">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="triggerId"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Categories
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="triggerId">
+                            </div>
+                        </li>
+                    </ul>
                 </div>
-                </li> -->
-                <li class="dropdown open">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="triggerId"
-                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Categories
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="triggerId">
-                        <!-- <button class="dropdown-item" id="Electronics_DDLI" >Electronics</button>
-                                    <button class="dropdown-item" id="Men_Clothing_DDLI" >Men's Clothing</button> -->
-                    </div>
-                </li>
-
-
-
-                </ul>
                 <form class="d-flex my-2 my-lg-0">
                     <input class="form-control me-sm-2" type="text" placeholder="Search" />
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
@@ -98,22 +73,19 @@
 
     </header>
 
-
-        <div class="container-fluid">
-            <div class="row"> <!-- Sidebar -->
-                <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse">
-                    <div class="position-sticky">
-                       <div class="cat-container">
-                            <button id="all-filter" onclick="">All Products</button>
-                       </div>
+    <div class="container-fluid">
+        <div class="row"> <!-- Sidebar -->
+            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse">
+                <div class="position-sticky">
+                    <div class="cat-container">
+                        <button id="all-filter">All Products</button>
                     </div>
-                </nav> <!-- Main Content -->
-                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 d-flex" id="product-container">
-                    <h1>Welcome to the Dashboard</h1>
-                    <p>This is the main content area.</p>
-                </main>
-            </div>
+                </div>
+            </nav>
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 d-flex" id="product-container"> <!-- Main Content -->
+            </main>
         </div>
+    </div>
 
   
 
