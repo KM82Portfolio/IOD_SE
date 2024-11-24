@@ -84,6 +84,24 @@ async function main(){
     
     // display filtered products if user selects to filter, else display all products
     filteredProducts!='' ? populateProductContainer(filteredProducts) : populateProductContainer(pdts);
+
+    let execSearch = document.querySelector('#search-button');
+    let searchField = document.querySelector('#search-criteria');
+    let searchResults;
+
+    execSearch.addEventListener('click',(e)=>{
+        e.preventDefault();
+        searchResults = pdts.filter((pdt)=>pdt.title.includes(searchField.value));
+        populateProductContainer(searchResults);
+    })
+    // This should ideally be done in ReactJS to allow DOM to update without deselecting text box
+    // searchField.addEventListener('change',(e)=>{
+    //     e.preventDefault();
+    //     searchResults = pdts.filter((pdt)=>pdt.title.includes(e.target.value));
+    //     console.log(searchResults);
+    //     populateProductContainer(searchResults);
+    // })
+    
 }
 
 main();
