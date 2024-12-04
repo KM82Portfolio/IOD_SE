@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./calculator.css" rel="stylesheet"></style>
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+
+        <div class="calculator">
+
+            <div type="text" class="display">0</div>
+
+            <div class="button-pad">
+                
+                <button class="fn-btn-span-2 orange operator" onclick="clearAll()">C</button>
+                <button class="fn-btn-span-2 orange operator" id="arrowbtn" onclick="backSpace()">&larr;</button>
+                
+                <button class="num-btn">7</button>
+                <button class="num-btn">8</button>
+                <button class="num-btn">9</button>
+                <button class="fn-btn-span-1 opbtn">+</button>
+
+                <button class="num-btn">4</button>
+                <button class="num-btn">5</button>
+                <button class="num-btn">6</button>
+                <button class="fn-btn-span-1 opbtn">-</button>
+
+                <button class="num-btn">1</button>
+                <button class="num-btn">2</button>
+                <button class="num-btn">3</button>
+                <button class="fn-btn-span-1 opbtn">x</button>
+
+                <button class="num-btn opbtn">0</button>
+                <button class="fn-btn-span-2" id="equalbtn" onclick="calculate()">=</button>
+                <button class="fn-btn-span-1 opbtn" id="divide">/</button>
+                
+            </div>
+
+        </div>
+
+    </div>
+    <script src="./calculator.js"></script>
+</body>
+</html>
